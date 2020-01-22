@@ -16,16 +16,19 @@
     <header>
         <div class="container header-home">
             <a href="index.html"><img src="/assets/img/lerolerologo.png" alt="Logo da empresa Lero Lero"></a>
-            <nav>
-                <ul class="nav justify-content-end">
-                    <li><a class="nav-link" href="#">Sobre</a></li>
-                    <li><a class="nav-link" href="#">Instrutores</a></li>
-                    <li><a class="nav-link" href="#">Comentários</a></li>
-                    <li><a class="nav-link" href="register.html">Registro</a></li>
-                    <li><a class="nav-link" href="#">Login</a></li>
-                    <li><a class="nav-link" href="#">Tabelas</a></li>
-                </ul>
-            </nav>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Menu
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <a class="dropdown-item" href="#">Sobre</a>
+                        <a class="dropdown-item" href="#">Instrutores</a>
+                        <a class="dropdown-item" href="#">Comentários</a>
+                        <a class="dropdown-item" href="register.html">Registro</a>
+                        <a class="dropdown-item" href="#">Login</a>
+                        <a class="dropdown-item" href="#">Tabelas</a>
+                    </div>
+                </div>
         </div>
     </header>
 
@@ -69,6 +72,7 @@
         </a>
     </div>
     
+    <script src="https://unpkg.com/@popperjs/core@2.0.0"></script>
     <script src="/assets/bootstrap/js/jquery-1.11.0.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
