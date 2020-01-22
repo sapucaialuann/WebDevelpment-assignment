@@ -1,0 +1,9 @@
+header a img {
+    max-height: 100px;
+
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+}
