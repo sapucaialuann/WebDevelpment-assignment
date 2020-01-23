@@ -1,14 +1,20 @@
-.header-home {
-    display: flex;
-    justify-content: space-between;
-}
-
 header a img {
+    margin-left: 15px;
     max-height: 40px;
 }
 
 .carousel-item img {
     opacity: 0.6;
-    height: 600px;
     overflow: hidden;
+    max-height:500px;
+    width: auto;
+    height: auto;
+}
+
+@media screen and (max-width: 400px) {
+    .carousel-item img {
+        height: 150px;
+    }
+    }
+
 }
