@@ -34,7 +34,7 @@ section .card-list {
     justify-content: center;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 599px) {
     .carousel-item img {
         height: 300px;
     }
