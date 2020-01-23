@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <header>
+    <!-- <header>
         <div class="container header-home">
             <a href="index.html"><img src="/assets/img/lerolerologo.png" alt="Logo da empresa Lero Lero"></a>
                 <div class="dropdown">
@@ -30,9 +30,27 @@
                     </div>
                 </div>
         </div>
+    </header> -->
+    <header class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html"><img src="/assets/img/lerolerologo.png" alt="Logo da empresa Lero Lero"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Instrutores</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Comentários</a></li>
+                <li class="nav-item"><a class="nav-link" href="register.html">Registro</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Tabelas</a></li>
+            </ul>
+        </div>
     </header>
 
-    
+
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -58,7 +76,8 @@
                 <img src="/assets/img/slide3.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h2 class="text-dark font-weight-bolder">Third slide label</h2>
-                    <p class="text-dark font-weight-bold">Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    <p class="text-dark font-weight-bold">Praesent commodo cursus magna, vel scelerisque nisl
+                        consectetur.</p>
                 </div>
             </div>
         </div>
@@ -71,7 +90,7 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-    
+
     <script src="https://unpkg.com/@popperjs/core@2.0.0"></script>
     <script src="/assets/bootstrap/js/jquery-1.11.0.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
