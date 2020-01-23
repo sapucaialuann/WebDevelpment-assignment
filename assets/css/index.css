@@ -1,3 +1,8 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 header a img {
     margin-left: 15px;
     max-height: 40px;
@@ -11,10 +16,31 @@ header a img {
     height: auto;
 }
 
+.card-course {
+    background-color: #fafafa;
+    border: 2px solid #0066cc;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+
+.card img {
+    height: 200px;
+    overflow: hidden;
+}
+section .card-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 @media screen and (max-width: 400px) {
     .carousel-item img {
-        height: 150px;
+        height: 300px;
     }
+}
+@media screen and (min-width: 600px ) and (max-width: 768px) {
+    .carousel-item img {
+        height: 300px;
     }
-
 }
