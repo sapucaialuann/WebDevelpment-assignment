@@ -23,11 +23,17 @@ header a img {
     margin: 0 auto;
 }
 
-
 .card img {
     height: 200px;
     overflow: hidden;
 }
+
+.classes-list {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+
 section .card-list {
     display: flex;
     flex-direction: column;
