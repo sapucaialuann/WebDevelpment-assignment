@@ -1,5 +1,5 @@
 body {
-    background-color: lightgrey;
+    background-color: rgb(218, 213, 213) !important;
 }
 
 .section-login {
@@ -8,6 +8,7 @@ body {
     justify-content: center;
     align-content: center;
     margin: 0 auto;
+    border-radius: 50px;
 }
 
 .section-login form {
@@ -15,4 +16,22 @@ body {
     flex-direction: column;
     justify-content: center;
     align-content: center;
+}
+
+@media screen and (max-width: 599px) {
+    .form-row .form-margin-fix {
+        margin: 0 auto !important;
+        display: flex;
+        align-self: center;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 600px) {
+    .form-row .form-margin-fix {
+        /* margin: 0 auto !important; */
+        margin-top: 4px !important;
+        display: flex !important;
+        align-self: center !important;
+        flex-direction: column !important;
+    }
 }
