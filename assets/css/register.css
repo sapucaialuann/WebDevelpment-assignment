@@ -8,7 +8,7 @@ body {
     justify-content: center;
     align-content: center;
     margin: 0 auto;
-    border-radius: 50 px;
+    border-radius: 10px 150px 10px 150px;
 }
 
 .section-login form {
