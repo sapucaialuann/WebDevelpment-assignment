@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.css">
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/register.css">
+
     <title>Curso Lero Lero</title>
 </head>
 
 <body>
     <header class="navbar navbar-expand-lg navbar-light bg-light header-home">
-        <a class="navbar-brand" href="index.html"><img src="/assets/img/lerolerologo.png"
+        <a class="navbar-brand" href="index.html"><img src="assets/img/lerolerologo.png"
                 alt="Logo da empresa Lero Lero"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,14 +36,16 @@
         </div>
     </header>
 
-    <main class="mt-5 mb-5 w-25 p-5 section-login">
+    <main class="mt-5 mb-5 w-50 p-5 section-login">
         <form>
             <h2>Login</h2>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email</label>
-                <input placeholder="email@email.com" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <small id="emailHelp" class="form-text text-muted">Por enquanto sem funcionalidade.</small>
-            </div>
+            <div class="form-group ">
+				<label form="form-register">Username</label>
+				<input type="text" class="form-control" required>
+				<div class="valid-feedback">
+					Looks good!
+				</div>
+			</div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
                 <input type="password" class="form-control" id="exampleInputPassword1">
@@ -59,11 +63,10 @@
         <p class="font-italic mb-2 text-center text-white">&copy;Copyrights </p>
     </footer>
 
+    <script src="assets/js/jquery.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2.0.0"></script>
-    <script src="/assets/js/login.js"></script>
-    <script src="/assets/bootstrap/js/jquery-1.11.0.min.js"></script>
-    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
