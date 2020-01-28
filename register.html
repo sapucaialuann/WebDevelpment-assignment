@@ -10,7 +10,6 @@
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap-grid.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/register.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/index.css">
-	<!-- <link rel="stylesheet" type="text/css" href="assets/css/locastyle.css"> -->
 	<title>Curso Lero Lero</title>
 </head>
 
@@ -36,7 +35,7 @@
 	</header>
 
 	<main class="mt-5 mb-5 w-50 p-5 section-login">
-		<form class="needs-validation" id="form-register" novalidate>
+		<form class="needs-validation" id="form-register">
 			<h2>Registro</h2>
 			<!-- Nome -->
 			<div class="form-group">
@@ -58,7 +57,7 @@
 			<div class="form-group ">
 				<label form="form-register">CPF</label>
 				<input type="text" class="form-control cpf-mask" data-mask="000.000.000-00"
-					placeholder="Ex.: 000.000.000-00" maxlength="11" required>
+					placeholder="Ex.: 000.000.000-00" length="11" required>
 				<div class="valid-feedback">
 					Looks good!
 				</div>
@@ -68,7 +67,6 @@
 				<label form="form-register">Email</label>
 				<input placeholder="email@email.com" type="email" class="form-control" id="exampleInputEmail1"
 					aria-describedby="emailHelp" required>
-				<small id="emailHelp" class="form-text text-muted">Por enquanto sem funcionalidade.</small>
 			</div>
 			<!-- Senha -->
 			<div class="form-group ">
@@ -79,7 +77,7 @@
 			<div class="form-group">
 				<label form="form-register">Celular</label>
 				<input type="text" class="form-control cel-sp-mask" placeholder="Ex.: (00) 00000-0000"
-					data-mask="(00) 00000-0000" maxlength="11" required>
+					data-mask="(00) 00000-0000" minlength="10" maxlength="11" required>
 			</div>
 			<!-- ENDEREÇO -->
 			<div class="form-row">
@@ -90,61 +88,65 @@
 				</div>
 				<!-- Rua -->
 				<div class="form-group">
-					<label for="logradouro">Endereço</label>
-					<input class="form-control" id="logradouro" type="text" required />
+					<label class="ml-5" for="logradouro">Endereço</label>
+					<input class="form-control ml-5" id="logradouro" type="text" required />
 				</div>
 			</div>
 			<!-- Número do endereço -->
 			<div class="form-row">
 				<div class="form-group">
 					<label for="numero">Número</label>
-					<input class="form-control" id="numero" type="text" required/>
+					<input class="form-control" id="numero" type="text" required />
 				</div>
 				<div class="form-group">
-					<label for="complemento">Complemento</label>
-					<input class="form-control" id="complemento" type="text" required/>
+					<label class="ml-5" for="complemento">Complemento</label>
+					<input class="form-control ml-5" id="complemento" type="text"/>
 				</div>
 			</div>
+			<!-- Bairro e cidade -->
 			<div class="form-row">
 				<div class="form-group">
 					<label for="bairro">Bairro</label>
 					<input class="form-control" id="bairro" type="text" required />
 				</div>
 				<div class="form-group">
-					<label for="cidade">Cidade</label>
-					<input class="form-control" id="cidade" type="text" required />
+					<label class="ml-5" for="cidade">Cidade</label>
+					<input class="form-control ml-5" id="cidade" type="text" required />
 				</div>
 			</div>
-			<label for="uf">Estado</label>
-			<select id="uf">
-				<option value="AC">Acre</option>
-				<option value="AL">Alagoas</option>
-				<option value="AP">Amapá</option>
-				<option value="AM">Amazonas</option>
-				<option value="BA">Bahia</option>
-				<option value="CE">Ceará</option>
-				<option value="DF">Distrito Federal</option>
-				<option value="ES">Espírito Santo</option>
-				<option value="GO">Goiás</option>
-				<option value="MA">Maranhão</option>
-				<option value="MT">Mato Grosso</option>
-				<option value="MS">Mato Grosso do Sul</option>
-				<option value="MG">Minas Gerais</option>
-				<option value="PA">Pará</option>
-				<option value="PB">Paraíba</option>
-				<option value="PR">Paraná</option>
-				<option value="PE">Pernambuco</option>
-				<option value="PI">Piauí</option>
-				<option value="RJ">Rio de Janeiro</option>
-				<option value="RN">Rio Grande do Norte</option>
-				<option value="RS">Rio Grande do Sul</option>
-				<option value="RO">Rondônia</option>
-				<option value="RR">Roraima</option>
-				<option value="SC">Santa Catarina</option>
-				<option value="SP">São Paulo</option>
-				<option value="SE">Sergipe</option>
-				<option value="TO">Tocantins</option>
-			</select>
+			<!-- Estado -->
+			<div class="form-group">
+				<label for="uf">Estado</label>
+				<select id="uf">
+					<option value="AC">Acre</option>
+					<option value="AL">Alagoas</option>
+					<option value="AP">Amapá</option>
+					<option value="AM">Amazonas</option>
+					<option value="BA">Bahia</option>
+					<option value="CE">Ceará</option>
+					<option value="DF">Distrito Federal</option>
+					<option value="ES">Espírito Santo</option>
+					<option value="GO">Goiás</option>
+					<option value="MA">Maranhão</option>
+					<option value="MT">Mato Grosso</option>
+					<option value="MS">Mato Grosso do Sul</option>
+					<option value="MG">Minas Gerais</option>
+					<option value="PA">Pará</option>
+					<option value="PB">Paraíba</option>
+					<option value="PR">Paraná</option>
+					<option value="PE">Pernambuco</option>
+					<option value="PI">Piauí</option>
+					<option value="RJ">Rio de Janeiro</option>
+					<option value="RN">Rio Grande do Norte</option>
+					<option value="RS">Rio Grande do Sul</option>
+					<option value="RO">Rondônia</option>
+					<option value="RR">Roraima</option>
+					<option value="SC">Santa Catarina</option>
+					<option value="SP">São Paulo</option>
+					<option value="SE">Sergipe</option>
+					<option value="TO">Tocantins</option>
+				</select>
+			</div>
 			<!-- Termos e condições -->
 			<div class="form-group">
 				<div class="form-check">
@@ -162,15 +164,8 @@
 		</form>
 	</main>
 
-	<div>
-		<form>
 
-		</form>
-	</div>
-
-
-
-	<script type="text/javascript" src="assets/js/jquery3.js"></script>
+	<!-- <script type="text/javascript" src="assets/js/jquery3.js"></script> -->
 	<script type="text/javascript" src="assets/bootstrap/js/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="https://unpkg.com/@popperjs/core@2.0.0"></script>
 	<script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
