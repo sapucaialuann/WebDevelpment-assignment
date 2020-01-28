@@ -1,0 +1,19 @@
+body {
+    background-color: rgb(218, 213, 213) !important;
+}
+
+.section-login {
+    display: flex;
+    background-color: #fafafa;
+    justify-content: center;
+    align-content: center;
+    margin: 0 auto;
+    border-radius: 50 px;
+}
+
+.section-login form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
