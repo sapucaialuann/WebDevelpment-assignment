@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(218, 213, 213) !important;
+    background-color: lightgray !important;
 }
 
 .section-login {
@@ -8,7 +8,7 @@ body {
     justify-content: center;
     align-content: center;
     margin: 0 auto;
-    border-radius: 10px 150px 10px 150px;
+    border-radius: 30px 200px 30px 200px;
 }
 
 .section-login form {
