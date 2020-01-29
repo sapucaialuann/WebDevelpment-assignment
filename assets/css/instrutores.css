@@ -1,0 +1,28 @@
+body {
+    display: flex;
+
+}
+
+main .container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+main .container .row {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+footer {
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 100%;
+    align-self: flex-end;
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+}
