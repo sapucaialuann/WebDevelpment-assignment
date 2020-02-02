@@ -40,7 +40,7 @@
 			<!-- Nome -->
 			<div class="form-group">
 				<label form="form-register">Nome</label>
-				<input type="text" class="form-control" required>
+				<input type="text" class="form-control" minlength="3" maxlength="50" required>
 				<div class="valid-feedback">
 					Looks good!
 				</div>
@@ -48,7 +48,7 @@
 			<!-- Login -->
 			<div class="form-group ">
 				<label form="form-register">Username</label>
-				<input type="text" class="form-control" required>
+				<input type="text" class="form-control" required minlength="3" maxlength="20">
 				<div class="valid-feedback">
 					Looks good!
 				</div>
@@ -65,13 +65,13 @@
 			<!-- Email -->
 			<div class="form-group ">
 				<label form="form-register">Email</label>
-				<input placeholder="email@email.com" type="email" class="form-control" id="exampleInputEmail1"
+				<input placeholder="email@email.com" minlength="3" maxlength="50" type="email" class="form-control" id="exampleInputEmail1"
 					aria-describedby="emailHelp" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
 			</div>
 			<!-- Senha -->
 			<div class="form-group ">
 				<label form="form-register">Password</label>
-				<input type="password" class="form-control" required>
+				<input type="password" class="form-control" required minlength="3" maxlength="255">
 			</div>
 			<!-- Telefone com DDD -->
 			<div class="form-group">
@@ -84,12 +84,13 @@
 				<!-- CEP -->
 				<div class="form-group">
 					<label for="cep">CEP</label>
-					<input class="form-control" id="cep" type="text" required />
+					<input class="form-control" 
+					length="9" id="cep" type="text" required />
 				</div>
 				<!-- Rua -->
 				<div class="form-group">
 					<label class=" form-margin-fix" for="logradouro">Endereço</label>
-					<input class="form-control  form-margin-fix" id="logradouro" type="text" required />
+					<input class="form-control  form-margin-fix" id="logradouro" type="text" required minlength="3" maxlength="50"/>
 				</div>
 			</div>
 			<!-- Número do endereço -->
@@ -159,7 +160,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- CELULAR, ENDEREÇO, CIDADE, BAIRRO E CEP -->
+
 			<button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
 				type="submit">Cadastrar!</button>
 		</form>
