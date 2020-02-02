@@ -26,10 +26,10 @@
 			<ul class="navbar-nav mr-auto justify-content-end">
 				<li class="nav-item"><a class="nav-link" href="sobre.html">Sobre</a></li>
 				<li class="nav-item"><a class="nav-link" href="instrutores.html">Instrutores</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Comentários</a></li>
+				<li class="nav-item"><a class="nav-link" href="comments.html">Comentários</a></li>
 				<li class="nav-item"><a class="nav-link" href="register.html">Registro</a></li>
 				<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Tabelas</a></li>
+				<li class="nav-item"><a class="nav-link" href="table.html">Tabelas</a></li>
 			</ul>
 		</div>
 	</header>
@@ -160,35 +160,158 @@
 				</div>
 			</div>
 			<!-- CELULAR, ENDEREÇO, CIDADE, BAIRRO E CEP -->
-			<button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" type="submit">Cadastrar!</button>
+			<button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+				type="submit">Cadastrar!</button>
 		</form>
 	</main>
 
-	<!-- Modal -->
-	<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-		aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Verifique se não deixou campos em branco!</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					Caso tenha preenchido tudo, registro confirmado!
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-				</div>
+	<section class="mt-5 mb-5 w-75 p-5 section-login">
+		<form class="needs-validation" id="cursos-form">
+			<h3>Cursos</h3>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Nome</label>
+				<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+					placeholder="Nome" required minlength="3" maxlength="50">
 			</div>
-		</div>
-	</div> -->
+			<div class="form-group">
+				<label for="exampleInputPassword1">Requisito</label>
+				<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Requisito" minlength="3"
+					maxlength="255">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Ementa</label>
+				<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Ementa" minlength="3"
+					maxlength="255">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Carga Horária</label>
+				<input type="text" class="form-control" id="exampleInputPassword1" placeholder="C.H" minlength="3"
+					maxlength="5">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Preco</label>
+				<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Preço" minlength="3">
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</section>
 
-	<footer class="bg-secondary mt-3 fixed-bottom">
-			<p class="mt-3 mb-1 text-center text-white">Feito por Luann Sapucaia e Felipe Matheus</p>
-			<p class="font-italic mb-2 text-center text-white">&copy;Copyrights </p>
-		</footer>
+	<section class="mt-5 mb-5 w-75 p-5 section-login">
+		<form class="needs-validation" id="instrutores-form">
+			<h3>Instrutores</h3>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Nome</label>
+				<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+					placeholder="Nome" required minlength="3" maxlength="50">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Email</label>
+				<input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email" required
+					minlength="3" maxlength="50">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">HomemHora</label>
+				<input type="text" class="form-control" id="exampleInputPassword1" placeholder="HomemHora" minlength="3"
+					maxlength="10">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Login</label>
+				<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Login" required
+					minlength="3" maxlength="20">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Senha</label>
+				<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" required
+					minlength="3" maxlength="255">
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</section>
+
+	<section class="mt-5 mb-5 w-75 p-5 section-login">
+		<form class="needs-validation" id="matriculas-form">
+			<h3>Matriculas</h3>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Turmas ID</label>
+				<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required
+					minlength="3" maxlength="10">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Alunos ID</label>
+				<input type="text" class="form-control" id="exampleInputPassword1" required minlength="3"
+					maxlength="11">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Dt Matricula</label>
+				<input type="date" class="form-control" id="exampleInputPassword1" placeholder="Data da matricula"
+					pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Nota</label>
+				<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nota" minlength="11">
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</section>
+
+	<section class="mt-5 mb-5 w-75 p-5 section-login">
+		<form class="needs-validation" id="turmas-form">
+			<h3>Turmas</h3>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Instutores ID</label>
+				<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required
+					minlength="3" maxlength="11">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Cursos ID</label>
+				<input type="text" class="form-control" id="exampleInputPassword1" required minlength="3"
+					maxlength="10">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Data Inicio</label>
+				<input type="date" class="form-control" id="exampleInputPassword1" placeholder="Data de inicio"
+					pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Data Fim</label>
+				<input type="date" class="form-control" id="exampleInputPassword1" placeholder="Data de fim"
+					pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">CH</label>
+				<input type="text" class="form-control" id="exampleInputPassword1" placeholder="C.H" minlength="3"
+					maxlength="5">
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</section>
+
+	<section class="mt-5 mb-5 w-75 p-5 section-login">
+		<form class="needs-validation" id="admin-form">
+			<h3>Admin</h3>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Nome</label>
+				<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+					placeholder="Nome" required minlength="3" maxlength="50">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Login</label>
+				<input type="email" class="form-control" id="exampleInputPassword1" placeholder="Login" required
+					minlength="3" maxlength="20">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Senha</label>
+				<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" required
+					minlength="3" maxlength="255">
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</section>
+
+	<footer class="bg-secondary mt-3 ">
+		<p class="mt-3 mb-1 text-center text-white">Feito por Luann Sapucaia e Felipe Matheus</p>
+		<p class="font-italic mb-2 text-center text-white">&copy;Copyrights </p>
+	</footer>
 
 
 	<script type="text/javascript" src="assets/js/jquery.js"></script>
