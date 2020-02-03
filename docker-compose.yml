@@ -1,0 +1,13 @@
+version: '3'
+volumes:
+  mysql_data:
+services:
+  db:
+    image: mysql:8
+    ports:
+      - 3307:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD: "root"
+      - MYSQL_DATABASE: "lerolero"
