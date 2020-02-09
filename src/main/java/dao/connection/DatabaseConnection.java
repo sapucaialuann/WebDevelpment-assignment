@@ -21,5 +21,8 @@ public class DatabaseConnection {
 
         return conn;
     }
+    public static void closeConn() {
+
+    }
     
 }

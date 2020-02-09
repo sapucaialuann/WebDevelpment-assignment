@@ -6,9 +6,9 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum Aprovacao {
 
-    APROVADO('S'),
-    REPROVADO('N');
+    APROVADO("S"),
+    REPROVADO("N");
 
-    public final char valor;
+    public final String valor;
 
 }

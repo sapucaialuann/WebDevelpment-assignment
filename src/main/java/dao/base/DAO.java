@@ -6,6 +6,8 @@ import model.base.Entity;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Optional;
 
 public abstract class DAO<T extends Entity> {
 
@@ -17,7 +19,7 @@ public abstract class DAO<T extends Entity> {
         this.tableName = tableName;
     }
 
-    public Boolean delete(Long id) {
+    public boolean delete(Long id) {
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("DELETE FROM ").append(tableName).append(" e WHERE e.id = ?");
 
@@ -26,12 +28,16 @@ public abstract class DAO<T extends Entity> {
             ps.setLong(1, id);
             ps.execute();
 
-            return Boolean.TRUE;
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
 
-            return Boolean.FALSE;
+            return false;
         }
     }
+
+    public abstract boolean saveOrUpdate(T entity);
+    public abstract Optional<T> findById(Long id);
+    public abstract List<T> findAll();
 
 }

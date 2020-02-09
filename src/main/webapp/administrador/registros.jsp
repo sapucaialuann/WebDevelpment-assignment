@@ -23,12 +23,14 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto justify-content-end">
-				<li class="nav-item"><a class="nav-link" href="../sobre.jsp">Sobre</a></li>
-				<li class="nav-item"><a class="nav-link" href="../instrutores.jsp">Instrutores</a></li>
-				<li class="nav-item"><a class="nav-link" href="../comentarios.jsp">Comentários</a></li>
-				<li class="nav-item"><a class="nav-link" href="../cadastro.jsp">Registro</a></li>
-				<li class="nav-item"><a class="nav-link" href="../login.jsp">Login</a></li>
-				<li class="nav-item"><a class="nav-link" href="registros.jsp">Tabelas</a></li>
+				<li class="nav-item"><a class="nav-link" href="sobre.jsp">Sobre</a></li>
+				<li class="nav-item"><a class="nav-link" href="instrutores.jsp">Instrutores</a></li>
+				<li class="nav-item"><a class="nav-link" href="comentarios.jsp">Comentários</a></li>
+				<li class="nav-item"><a class="nav-link" href="cadastro.jsp">Registro</a></li>
+				<li class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li>
+				<li class="nav-item"><a class="nav-link" href="aluno/pessoal.jsp">Área do aluno</a></li>
+				<li class="nav-item"><a class="nav-link" href="instrutor/pessoal.jsp">Área do instrutor</a></li>
+				<li class="nav-item"><a class="nav-link" href="administrador/registros.jsp">Área restrita</a></li>
 			</ul>
 		</div>
 	</header>

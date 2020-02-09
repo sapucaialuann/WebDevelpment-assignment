@@ -15,8 +15,8 @@ public class Usuario extends Entity {
     private String senha;
     private TipoUsuario tipo;
 
-    public void hashPassword(String senha) {
-        this.senha = BCrypt.hashpw(senha, BCrypt.gensalt());
+    public String hashPassword() {
+        return BCrypt.hashpw(this.senha, BCrypt.gensalt());
     }
 
 }

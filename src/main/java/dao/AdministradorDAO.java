@@ -8,6 +8,7 @@ import model.base.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 public class AdministradorDAO extends LoginDAO<Administrador> {
@@ -16,7 +17,8 @@ public class AdministradorDAO extends LoginDAO<Administrador> {
         super("administrador");
     }
 
-    public Boolean saveOrUpdate(Administrador entity) {
+    @Override
+    public boolean saveOrUpdate(Administrador entity) {
         StringBuilder queryBuilder = new StringBuilder();
 
         if (entity.getId() == null) {
@@ -31,7 +33,7 @@ public class AdministradorDAO extends LoginDAO<Administrador> {
             PreparedStatement ps = conn.prepareStatement(queryBuilder.toString());
             ps.setString(1, entity.getNome());
             ps.setString(2, entity.getLogin());
-            ps.setString(3, entity.getSenha());
+            ps.setString(3, entity.hashPassword());
 
             if (entity.getId() != null) {
                 ps.setLong(4, entity.getId());
@@ -39,20 +41,18 @@ public class AdministradorDAO extends LoginDAO<Administrador> {
 
             ps.execute();
 
-            return Boolean.TRUE;
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
 
-            return Boolean.FALSE;
+            return false;
         }
-
     }
 
+    @Override
     public Optional<Administrador> findById(Long id) {
         Administrador entity = new Administrador();
-        StringBuilder queryBuilder = new StringBuilder();
-
-        queryBuilder.append("SELECT * FROM ").append(tableName).append(" e WHERE e.id = ?");
+        StringBuilder queryBuilder = new StringBuilder("SELECT * FROM ").append(tableName).append(" e WHERE e.id = ?");
 
         try {
             PreparedStatement ps = conn.prepareStatement(queryBuilder.toString());
@@ -79,12 +79,17 @@ public class AdministradorDAO extends LoginDAO<Administrador> {
     }
 
     @Override
+    public List<Administrador> findAll() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public Optional<Usuario> login(String login, String password) {
         if (!this.findById(1L).isPresent()) {
             Administrador adm = new Administrador();
             adm.setNome("Administrador");
             adm.setLogin("admin_lero");
-            adm.hashPassword("admin123");
+            adm.setSenha("admin123");
 
             this.saveOrUpdate(adm);
         }
