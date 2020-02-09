@@ -1,4 +1,4 @@
-package connection;
+package dao.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +11,7 @@ public class DatabaseConnection {
     public static Connection getConn() {
         if (conn == null) {
             try {
-                Class.forName("com.mysql.jdbc.Driver");
+                Class.forName("com.mysql.cj.jdbc.Driver");
                 conn = DriverManager.getConnection("jdbc:mysql://localhost/lerolero", "root", "");
             } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
@@ -21,4 +21,5 @@ public class DatabaseConnection {
 
         return conn;
     }
+    
 }

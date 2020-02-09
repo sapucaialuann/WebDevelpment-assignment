@@ -2,20 +2,18 @@ package model;
 
 import lombok.Getter;
 import lombok.Setter;
+import model.base.Entity;
 import org.mindrot.jbcrypt.BCrypt;
 
 @Getter
-public abstract class Usuario {
+@Setter
+public class Usuario extends Entity {
 
-    @Setter
     private String nome;
-
-    @Setter
     private String login;
-
     private String senha;
 
-    public void setSenha(String senha) {
+    public void hashPassword(String senha) {
         this.senha = BCrypt.hashpw(senha, BCrypt.gensalt());
     }
 

@@ -1,7 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt">
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<html lang="pt">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -14,7 +15,7 @@
 
 <body>
     <header class="navbar navbar-expand-lg navbar-light bg-light header-home">
-        <a class="navbar-brand" href="index.html"><img src="assets/img/lerolerologo.png"
+        <a class="navbar-brand" href="index.jsp"><img src="assets/img/lerolerologo.png"
                 alt="Logo da empresa Lero Lero"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,12 +24,12 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto justify-content-end">
-                <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre</a></li>
-                <li class="nav-item"><a class="nav-link" href="instrutores.html">Instrutores</a></li>
-                <li class="nav-item"><a class="nav-link" href="comments.html">Comentários</a></li>
-                <li class="nav-item"><a class="nav-link" href="register.html">Registro</a></li>
-                <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                <li class="nav-item"><a class="nav-link" href="table.html">Tabelas</a></li>
+                <li class="nav-item"><a class="nav-link" href="sobre.jsp">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link" href="instrutores.jsp">Instrutores</a></li>
+                <li class="nav-item"><a class="nav-link" href="comments.jsp">Comentários</a></li>
+                <li class="nav-item"><a class="nav-link" href="register.jsp">Registro</a></li>
+                <li class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="table.jsp">Tabelas</a></li>
             </ul>
         </div>
     </header>
