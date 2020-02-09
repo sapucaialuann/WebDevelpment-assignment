@@ -25,13 +25,13 @@ public abstract class LoginDAO<T extends Usuario> extends DAO<T> {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next() && BCrypt.checkpw(password, rs.getString("senha"))) {
-                Usuario adm = new Usuario();
-                adm.setId(rs.getLong("id"));
-                adm.setNome(rs.getString("nome"));
-                adm.setLogin(rs.getString("login"));
-                adm.setSenha(rs.getString("senha"));
+                Usuario user = new Usuario();
+                user.setId(rs.getLong("id"));
+                user.setNome(rs.getString("nome"));
+                user.setLogin(rs.getString("login"));
+                user.setSenha(rs.getString("senha"));
 
-                return Optional.of(adm);
+                return Optional.of(user);
             }
 
             return Optional.empty();

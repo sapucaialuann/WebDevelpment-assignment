@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
 
         try (PrintWriter out = resp.getWriter()) {
             if (login != null && senha != null && tipo != null) {
-                LoginDAO dao;
+                LoginDAO<?> dao;
 
                 if (tipo.equals(TipoUsuario.ADMIN.tipo)) {
                     dao = new AdministradorDAO();
@@ -46,22 +46,19 @@ public class LoginServlet extends HttpServlet {
                 Optional<Usuario> user = dao.login(login, senha);
 
                 if (user.isPresent()) {
-                    Usuario u = user.get();
-                    HttpSession session = req.getSession(true);
-
-                    session.setAttribute("id", u.getId());
-                    session.setAttribute("nome", u.getNome());
-                    session.setAttribute("tipo", TipoUsuario.valueOf(tipo.toUpperCase()));
+                    HttpSession session = req.getSession();
+                    session.setAttribute("user", user.get());
 
                     resp.sendRedirect("/index.jsp");
+                } else {
+                    out.println("Login ou senha incorretos");
+                    resp.setHeader("Refresh", "3; url=login.jsp");
                 }
 
-                out.println("Login ou senha incorretos");
             } else {
                 out.println("Os parâmetros requeridos não foram passados");
+                resp.setHeader("Refresh", "3; url=login.jsp");
             }
-
-            resp.setHeader("Refresh", "3; url=login.jsp");
         }
     }
 
