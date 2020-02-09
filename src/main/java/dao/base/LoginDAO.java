@@ -1,5 +1,6 @@
 package dao.base;
 
+import enums.TipoUsuario;
 import model.base.Usuario;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -14,7 +15,9 @@ public abstract class LoginDAO<T extends Usuario> extends DAO<T> {
         super(tableName);
     }
 
-    public Optional<Usuario> login(String login, String password) {
+    public abstract Optional<Usuario> login(String login, String password);
+
+    protected Optional<Usuario> login(String login, String password, TipoUsuario tipo) {
         StringBuilder queryBuilder = new StringBuilder().append("SELECT * FROM ").append(tableName)
                 .append(" e WHERE e.login = ?");
 
@@ -29,6 +32,7 @@ public abstract class LoginDAO<T extends Usuario> extends DAO<T> {
                 user.setId(rs.getLong("id"));
                 user.setNome(rs.getString("nome"));
                 user.setLogin(rs.getString("login"));
+                user.setTipo(tipo);
 
                 return Optional.of(user);
             }

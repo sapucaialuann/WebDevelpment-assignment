@@ -1,6 +1,7 @@
 package dao;
 
 import dao.base.LoginDAO;
+import enums.TipoUsuario;
 import model.Administrador;
 import model.base.Usuario;
 
@@ -88,7 +89,7 @@ public class AdministradorDAO extends LoginDAO<Administrador> {
             this.saveOrUpdate(adm);
         }
 
-        return super.login(login, password);
+        return this.login(login, password, TipoUsuario.ADMIN);
     }
 
 }

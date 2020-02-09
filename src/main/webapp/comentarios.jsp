@@ -1,9 +1,6 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<html lang="pt">
+<%@ page contentType="text/html;charset=UTF-8" %>
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta charset="UTF-8">
     <title>Cursos Lero Lero</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -30,10 +27,10 @@
             <ul class="navbar-nav mr-auto justify-content-end">
                 <li class="nav-item"><a class="nav-link" href="sobre.jsp">Sobre</a></li>
                 <li class="nav-item"><a class="nav-link" href="instrutores.jsp">Instrutores</a></li>
-                <li class="nav-item"><a class="nav-link" href="comments.jsp">Comentários</a></li>
-                <li class="nav-item"><a class="nav-link" href="register.jsp">Registro</a></li>
+                <li class="nav-item"><a class="nav-link" href="comentarios.jsp">Comentários</a></li>
+                <li class="nav-item"><a class="nav-link" href="cadastro.jsp">Registro</a></li>
                 <li class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li>
-                <li class="nav-item"><a class="nav-link" href="table.jsp">Tabelas</a></li>
+                <li class="nav-item"><a class="nav-link" href="administrador/registros.jsp">Tabelas</a></li>
             </ul>
         </div>
     </header>

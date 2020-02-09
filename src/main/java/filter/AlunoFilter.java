@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter({"/aluno.jsp", "/instrutor.jsp", "/admin.jsp"})
-public class AccessFilter implements Filter {
+@WebFilter("/aluno/*")
+public class AlunoFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -20,17 +20,11 @@ public class AccessFilter implements Filter {
         HttpSession session = req.getSession();
         Usuario user = (Usuario) session.getAttribute("user");
 
-        if (user == null || !this.hasAccess(user.getTipo(), req)) {
+        if (user == null || user.getTipo().equals(TipoUsuario.INSTRUTOR)) {
             resp.sendRedirect("/index.jsp");
         }
 
         chain.doFilter(request, response);
-    }
-
-    private boolean hasAccess(TipoUsuario tipo, HttpServletRequest req) {
-        return tipo.equals(TipoUsuario.ADMIN) ||
-                req.getRequestURI().contains("instrutor") && tipo.equals(TipoUsuario.INSTRUTOR) ||
-                req.getRequestURI().contains("aluno") && tipo.equals(TipoUsuario.ALUNO);
     }
 
 }
