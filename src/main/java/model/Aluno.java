@@ -3,6 +3,7 @@ package model;
 import enums.Aprovacao;
 import lombok.Getter;
 import lombok.Setter;
+import model.base.Usuario;
 
 @Getter
 @Setter

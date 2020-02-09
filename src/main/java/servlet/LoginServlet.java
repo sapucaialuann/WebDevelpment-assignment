@@ -5,7 +5,7 @@ import dao.AlunoDAO;
 import dao.InstrutorDAO;
 import dao.base.LoginDAO;
 import enums.TipoUsuario;
-import model.Usuario;
+import model.base.Usuario;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Optional;
 
-@WebServlet(name = "LoginServlet", urlPatterns = "/login")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
     @Override
@@ -51,23 +51,23 @@ public class LoginServlet extends HttpServlet {
 
                     session.setAttribute("id", u.getId());
                     session.setAttribute("nome", u.getNome());
-                    session.setAttribute("tipo", tipo);
+                    session.setAttribute("tipo", TipoUsuario.valueOf(tipo.toUpperCase()));
 
-                    resp.sendRedirect(req.getContextPath() + "/index.jsp");
+                    resp.sendRedirect("/index.jsp");
                 }
 
-                out.println("Login ou senha incompatíveis");
-                resp.setHeader("Refresh", "3; url=login.jsp");
+                out.println("Login ou senha incorretos");
             } else {
                 out.println("Os parâmetros requeridos não foram passados");
-                resp.setHeader("Refresh", "3; url=login.jsp");
             }
+
+            resp.setHeader("Refresh", "3; url=login.jsp");
         }
     }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().invalidate();
-        resp.sendRedirect(req.getContextPath() + "/login.jsp");
+        resp.sendRedirect("/login.jsp");
     }
 }

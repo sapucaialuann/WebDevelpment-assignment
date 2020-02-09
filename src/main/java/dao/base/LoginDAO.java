@@ -1,6 +1,6 @@
 package dao.base;
 
-import model.Usuario;
+import model.base.Usuario;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.PreparedStatement;

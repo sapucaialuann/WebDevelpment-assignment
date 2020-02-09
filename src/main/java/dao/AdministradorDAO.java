@@ -2,7 +2,7 @@ package dao;
 
 import dao.base.LoginDAO;
 import model.Administrador;
-import model.Usuario;
+import model.base.Usuario;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
