@@ -29,7 +29,6 @@ public abstract class LoginDAO<T extends Usuario> extends DAO<T> {
                 user.setId(rs.getLong("id"));
                 user.setNome(rs.getString("nome"));
                 user.setLogin(rs.getString("login"));
-                user.setSenha(rs.getString("senha"));
 
                 return Optional.of(user);
             }

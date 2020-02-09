@@ -20,10 +20,8 @@ public class AccessFilter implements Filter {
         HttpSession session = req.getSession();
         Usuario user = (Usuario) session.getAttribute("user");
 
-        if (user == null) {
+        if (user == null || !this.hasAccess(user.getTipo(), req)) {
             resp.sendRedirect("/index.jsp");
-        } else if (!this.hasAccess(user.getTipo(), req)) {
-            resp.sendRedirect("index.jsp");
         }
 
         chain.doFilter(request, response);
