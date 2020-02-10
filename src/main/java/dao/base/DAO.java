@@ -2,6 +2,7 @@ package dao.base;
 
 import dao.connection.DatabaseConnection;
 import model.base.Entity;
+import org.apache.commons.dbutils.DbUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,20 +12,19 @@ import java.util.Optional;
 
 public abstract class DAO<T extends Entity> {
 
-    protected final Connection conn;
     protected final String tableName;
 
     protected DAO(String tableName) {
-        this.conn = DatabaseConnection.getConn();
         this.tableName = tableName;
     }
 
     public boolean delete(Long id) {
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("DELETE FROM ").append(tableName).append(" e WHERE e.id = ?");
+        String query = "DELETE FROM " + tableName + " WHERE id = ?";
+        PreparedStatement ps = null;
+        Connection conn = DatabaseConnection.getConn();
 
         try {
-            PreparedStatement ps = conn.prepareStatement(queryBuilder.toString());
+            ps = conn.prepareStatement(query);
             ps.setLong(1, id);
             ps.execute();
 
@@ -33,6 +33,9 @@ public abstract class DAO<T extends Entity> {
             e.printStackTrace();
 
             return false;
+        } finally {
+            DbUtils.closeQuietly(conn);
+            DbUtils.closeQuietly(ps);
         }
     }
 

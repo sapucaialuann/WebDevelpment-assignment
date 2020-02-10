@@ -1,9 +1,12 @@
 package dao.base;
 
+import dao.connection.DatabaseConnection;
 import enums.TipoUsuario;
 import model.base.Usuario;
+import org.apache.commons.dbutils.DbUtils;
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,14 +21,15 @@ public abstract class LoginDAO<T extends Usuario> extends DAO<T> {
     public abstract Optional<Usuario> login(String login, String password);
 
     protected Optional<Usuario> login(String login, String password, TipoUsuario tipo) {
-        StringBuilder queryBuilder = new StringBuilder().append("SELECT * FROM ").append(tableName)
-                .append(" e WHERE e.login = ?");
+        String query = "SELECT * FROM " + tableName + " WHERE login = ?";
+        Connection conn = DatabaseConnection.getConn();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
 
         try {
-            PreparedStatement ps = conn.prepareStatement(queryBuilder.toString());
+            ps = conn.prepareStatement(query);
             ps.setString(1, login);
-
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
 
             if (rs.next() && BCrypt.checkpw(password, rs.getString("senha"))) {
                 Usuario user = new Usuario();
@@ -42,6 +46,10 @@ public abstract class LoginDAO<T extends Usuario> extends DAO<T> {
             e.printStackTrace();
 
             return Optional.empty();
+        } finally {
+            DbUtils.closeQuietly(conn);
+            DbUtils.closeQuietly(ps);
+            DbUtils.closeQuietly(rs);
         }
     }
 

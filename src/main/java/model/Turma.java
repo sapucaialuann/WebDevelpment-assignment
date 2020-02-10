@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import model.base.Entity;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -12,8 +12,8 @@ public class Turma extends Entity {
 
     private Instrutor instrutor;
     private Curso curso;
-    private LocalDate dataInicio;
-    private LocalDate dataFinal;
+    private Date dataInicio;
+    private Date dataFinal;
     private Short cargaHoraria;
 
 }

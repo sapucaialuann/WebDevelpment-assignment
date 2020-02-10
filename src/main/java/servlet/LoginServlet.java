@@ -67,4 +67,5 @@ public class LoginServlet extends HttpServlet {
         req.getSession().invalidate();
         resp.sendRedirect("/login.jsp");
     }
+
 }

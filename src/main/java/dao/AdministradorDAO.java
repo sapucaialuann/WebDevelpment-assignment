@@ -1,10 +1,13 @@
 package dao;
 
 import dao.base.LoginDAO;
+import dao.connection.DatabaseConnection;
 import enums.TipoUsuario;
 import model.Administrador;
 import model.base.Usuario;
+import org.apache.commons.dbutils.DbUtils;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,46 +22,52 @@ public class AdministradorDAO extends LoginDAO<Administrador> {
 
     @Override
     public boolean saveOrUpdate(Administrador entity) {
-        StringBuilder queryBuilder = new StringBuilder();
+        String query;
+        Connection conn = DatabaseConnection.getConn();
+        PreparedStatement ps = null;
 
         if (entity.getId() == null) {
-            queryBuilder.append("INSERT INTO ").append(tableName).append("(nome, login, senha) VALUES ")
-                    .append("(?, ?, ?)");
+            query = "INSERT INTO " + tableName + "(nome, login, senha) VALUES (?, ?, ?)";
         } else {
-            queryBuilder.append("UPDATE ").append(tableName)
-                    .append(" e SET e.nome = ?, e.login = ?, e.senha = ? WHERE e.id = ?");
+            query = "UPDATE " + tableName + " SET nome = ?, login = ?, senha = ? WHERE id = ?";
         }
 
         try {
-            PreparedStatement ps = conn.prepareStatement(queryBuilder.toString());
+            ps = conn.prepareStatement(query);
             ps.setString(1, entity.getNome());
             ps.setString(2, entity.getLogin());
             ps.setString(3, entity.hashPassword());
 
             if (entity.getId() != null) {
                 ps.setLong(4, entity.getId());
+                ps.executeUpdate();
+            } else {
+                ps.execute();
             }
-
-            ps.execute();
 
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
 
             return false;
+        } finally {
+            DbUtils.closeQuietly(conn);
+            DbUtils.closeQuietly(ps);
         }
     }
 
     @Override
     public Optional<Administrador> findById(Long id) {
+        String query = "SELECT * FROM " + tableName + " WHERE id = ?";
+        Connection conn = DatabaseConnection.getConn();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         Administrador entity = new Administrador();
-        StringBuilder queryBuilder = new StringBuilder("SELECT * FROM ").append(tableName).append(" e WHERE e.id = ?");
 
         try {
-            PreparedStatement ps = conn.prepareStatement(queryBuilder.toString());
+            ps = conn.prepareStatement(query);
             ps.setLong(1, id);
-
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
 
             if (rs.next()) {
                 entity.setId(id);
@@ -75,6 +84,10 @@ public class AdministradorDAO extends LoginDAO<Administrador> {
             e.printStackTrace();
 
             return Optional.empty();
+        } finally {
+            DbUtils.closeQuietly(conn);
+            DbUtils.closeQuietly(ps);
+            DbUtils.closeQuietly(rs);
         }
     }
 
