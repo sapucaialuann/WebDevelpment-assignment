@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt">
-
+<%@ page contentType="text/html;charset=UTF-8" %>
+<html>
 <head>
     <title>Cursos Lero Lero</title>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -19,20 +17,22 @@
 <body>
 
     <header class="navbar navbar-expand-lg navbar-light bg-light header-home">
-        <a class="navbar-brand" href="index.html"><img src="assets/img/lerolerologo.png"
-                alt="Logo da empresa Lero Lero"></a>
+        <a class="navbar-brand" href="index.jsp"><img src="assets/img/lerolerologo.png"
+                                                      alt="Logo da empresa Lero Lero"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto justify-content-end">
-                <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre</a></li>
-                <li class="nav-item"><a class="nav-link" href="instrutores.html">Instrutores</a></li>
-                <li class="nav-item"><a class="nav-link" href="comments.html">Comentários</a></li>
-                <li class="nav-item"><a class="nav-link" href="register.html">Registro</a></li>
-                <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                <li class="nav-item"><a class="nav-link" href="table.html">Tabelas</a></li>
+                <li class="nav-item"><a class="nav-link" href="sobre.jsp">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link" href="instrutores.jsp">Instrutores</a></li>
+                <li class="nav-item"><a class="nav-link" href="comentarios.jsp">Comentários</a></li>
+                <li class="nav-item"><a class="nav-link" href="cadastro.jsp">Registro</a></li>
+                <li class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="aluno/pessoal.jsp">Área do aluno</a></li>
+                <li class="nav-item"><a class="nav-link" href="instrutor/pessoal.jsp">Área do instrutor</a></li>
+                <li class="nav-item"><a class="nav-link" href="administrador/registros.jsp">Área restrita</a></li>
             </ul>
         </div>
     </header>
