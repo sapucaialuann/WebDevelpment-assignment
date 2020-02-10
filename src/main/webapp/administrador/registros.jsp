@@ -16,7 +16,7 @@
 
 	<header class="navbar navbar-expand-lg navbar-light bg-light header-home">
 		<a class="navbar-brand" href="../index.jsp"><img src="../assets/img/lerolerologo.png"
-														 alt="Logo da empresa Lero Lero"></a>
+		alt="Logo da empresa Lero Lero"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -36,6 +36,7 @@
 	</header>
 
 	<h1 class="mb-3">Tabelas</h1>
+	<!-- Cursos -->
 	<div class="container">
 		<h2>Cursos</h2>
 		<table class="table table-responsive table-hover table-striped table-bordered">
@@ -47,6 +48,7 @@
 					<th scope="col">Ementa</th>
 					<th scope="col">Carga horária</th>
 					<th scope="col">Preço</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -56,12 +58,13 @@
 					<td>Otto</td>
 					<td>@mdo</td>
 					<td>@mdo</td>
+					<td>@mdo</td>
+					<td><button type="button" class="btn btn-outline-primary">Selecionar</button>
+						<button type="button" class="btn btn-outline-danger">Deletar</button></td>
 				</tr>
 			</tbody>
 		</table>
-	</div>
 
-	<div class="container">
 		<h3>Cadastrar curso:</h3>
 		<section class="mb-5 w-75 p-5 section-login">
 			<form class="needs-validation" id="cursos-form">
@@ -95,6 +98,7 @@
 		</section>
 	</div>
 
+	<!-- Instrutores -->
 	<div class="container">
 		<h2>Instrutores</h2>
 		<table class="table table-responsive table-hover table-striped table-bordered">
@@ -106,6 +110,7 @@
 					<th scope="col">Valor/Hora</th>
 					<th scope="col">Login</th>
 					<th scope="col">Senha</th>
+					<th scope="col"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -115,6 +120,9 @@
 					<td>Otto</td>
 					<td>@mdo</td>
 					<td>@mdo</td>
+					<td>@mdo</td>
+					<td><button type="button" class="btn btn-outline-primary">Selecionar</button>
+						<button type="button" class="btn btn-outline-danger">Deletar</button></td>
 				</tr>
 			</tbody>
 		</table>
@@ -152,6 +160,7 @@
 		</section>
 	</div>
 
+	<!-- Matrículas -->
 	<div class="container">
 		<h2>Matrículas</h2>
 		<table class="table table-responsive table-hover table-striped table-bordered">
@@ -170,6 +179,9 @@
 					<td>Mark</td>
 					<td>Otto</td>
 					<td>@mdo</td>
+					<td>@mdo</td>
+					<td><button type="button" class="btn btn-outline-primary">Selecionar</button>
+						<button type="button" class="btn btn-outline-danger">Deletar</button></td>
 				</tr>
 			</tbody>
 
@@ -203,6 +215,7 @@
 		</section>
 	</div>
 
+	<!-- Turmas -->
 	<div class="container">
 		<h2>Turmas</h2>
 		<table class="table table-responsive table-hover table-striped table-bordered">
@@ -224,6 +237,9 @@
 					<td>Mark</td>
 					<td>Otto</td>
 					<td>@mdo</td>
+					<td><button type="button" class="btn btn-outline-primary">Selecionar</button>
+						<button type="button" class="btn btn-outline-danger">Deletar</button></td>
+					
 				</tr>
 			</tbody>
 		</table>
@@ -261,6 +277,7 @@
 		</section>
 	</div>
 
+	<!-- Administrador -->
 	<div class="container">
 
 		<h2>Administrador</h2>
@@ -279,6 +296,9 @@
 					<td>Mark</td>
 					<td>Otto</td>
 					<td>@mdo</td>
+					<td><button type="button" class="btn btn-outline-primary">Selecionar</button>
+						<button type="button" class="btn btn-outline-danger">Deletar</button></td>
+					
 				</tr>
 			</tbody>
 		</table>
@@ -307,6 +327,7 @@
 		</section>
 	</div>
 
+	<!-- Alunos -->
 	<div class="container">
 		<h2>Alunos</h2>
 		<table class="table table-responsive-md table-hover table-striped table-bordered">
@@ -338,6 +359,8 @@
 					<td>Otto</td>
 					<td>@mdo</td>
 					<td>@mdo</td>
+					<td><button type="button" class="btn btn-outline-primary">Selecionar</button>
+						<button type="button" class="btn btn-outline-danger">Deletar</button></td>
 				</tr>
 			</tbody>
 		</table>
