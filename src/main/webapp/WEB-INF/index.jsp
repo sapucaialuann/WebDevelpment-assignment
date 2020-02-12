@@ -1,34 +1,45 @@
+<%@ page import="model.Usuario" %>
+<%@ page import="enums.TipoUsuario" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<% Usuario user = (Usuario) request.getSession().getAttribute("user");%>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap-grid.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/index.css">
     <title>Curso Lero Lero</title>
 </head>
 
 <body>
     <header class="navbar navbar-expand-lg navbar-light bg-light header-home">
-        <a class="navbar-brand" href="index.jsp"><img src="assets/img/lerolerologo.png"
+        <a class="navbar-brand" href="index.jsp"><img src="../assets/img/lerolerologo.png"
                 alt="Logo da empresa Lero Lero"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto justify-content-end">
-                <li class="nav-item"><a class="nav-link" href="sobre.jsp">Sobre</a></li>
-                <li class="nav-item"><a class="nav-link" href="instrutores.jsp">Instrutores</a></li>
-                <li class="nav-item"><a class="nav-link" href="comentarios.jsp">Comentários</a></li>
-                <li class="nav-item"><a class="nav-link" href="cadastro.jsp">Registro</a></li>
-                <li class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li>
-                <li class="nav-item"><a class="nav-link" href="aluno/pessoal.jsp">Área do aluno</a></li>
-                <li class="nav-item"><a class="nav-link" href="instrutor/pessoal.jsp">Área do instrutor</a></li>
-                <li class="nav-item"><a class="nav-link" href="administrador/registros.jsp">Área restrita</a></li>
+                <li class="nav-item"><a class="nav-link" href="sobre">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link" href="instrutores">Instrutores</a></li>
+                <li class="nav-item"><a class="nav-link" href="comentarios">Comentários</a></li>
+                <li class="nav-item"><a class="nav-link" href="registro">Registro</a></li>
+                <% if (user == null ) { %>
+                    <li class="nav-item"><a class="nav-link" href="login">Login</a></li>
+                <% } else { %>
+                    <% TipoUsuario tipo = user.getTipo();
+                    if (tipo.equals(TipoUsuario.ADMIN)) {%>
+                        <li class="nav-item"><a class="nav-link" href="administrador/crud">Área restrita</a></li>
+                    <%} else if (tipo.equals(TipoUsuario.INSTRUTOR)) { %>
+                        <li class="nav-item"><a class="nav-link" href="instrutor">Área do instrutor</a></li>
+                    <%} else if (tipo.equals(TipoUsuario.ALUNO)) { %>
+                        <li class="nav-item"><a class="nav-link" href="aluno">Área do aluno</a></li>
+                    <%} %>
+                    <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+                <% } %>
             </ul>
         </div>
     </header>
@@ -42,7 +53,7 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="assets/img/slide1.jpg" class="d-block w-100" alt="...">
+                    <img src="../assets/img/slide1.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h2 class="text-dark font-weight-bolder">First slide label</h2>
                         <p class="text-dark font-weight-bold">Nulla vitae elit libero, a pharetra augue mollis interdum.
@@ -50,7 +61,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/img/slide2.jpg" class="d-block w-100" alt="...">
+                    <img src="../assets/img/slide2.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h2 class="text-dark font-weight-bolder">Second slide label</h2>
                         <p class="text-dark font-weight-bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -58,7 +69,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/img/slide3.jpg" class="d-block w-100" alt="...">
+                    <img src="../assets/img/slide3.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h2 class="text-dark font-weight-bolder">Third slide label</h2>
                         <p class="text-dark font-weight-bold">Praesent commodo cursus magna, vel scelerisque nisl
@@ -84,7 +95,7 @@
         <div class="card mb-4 card-course" style="max-width: 800px;">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img src="assets/img/slide3.jpg" class="card-img" alt="...">
+                    <img src="../assets/img/slide3.jpg" class="card-img" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -101,7 +112,7 @@
         <div class="card mb-4 card-course" style="max-width: 800px;">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img src="assets/img/slide2.jpg" class="card-img" alt="...">
+                    <img src="../assets/img/slide2.jpg" class="card-img" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -122,7 +133,7 @@
         <div class="row classes-list">
             <div class="mb-4 sm-6">
                 <div class="card" style="width: 18rem;">
-                    <img src="assets/img/slide3.jpg" class="card-img-top" alt="...">
+                    <img src="../assets/img/slide3.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
@@ -134,7 +145,7 @@
 
             <div class="mb-4 sm-6">
                 <div class="card" style="width: 18rem;">
-                    <img src="assets/img/slide3.jpg" class="card-img-top" alt="...">
+                    <img src="../assets/img/slide3.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
@@ -146,7 +157,7 @@
 
             <div class="mb-4 sm-6">
                 <div class="card" style="width: 18rem;">
-                    <img src="assets/img/slide3.jpg" class="card-img-top" alt="...">
+                    <img src="../assets/img/slide3.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
@@ -163,11 +174,11 @@
         <p class="font-italic mb-2 text-center text-white">&copy;Copyrights </p>
     </footer>
 
-    <script type="text/javascript" src="assets/js/jquery.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.js"></script>
     <script type="text/javascript" src="https://unpkg.com/@popperjs/core@2.0.0"></script>
-    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="assets/js/locastyle.js"></script>
+    <script type="text/javascript" src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../assets/js/locastyle.js"></script>
 </body>
 
 </html>

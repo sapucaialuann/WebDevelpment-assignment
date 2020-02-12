@@ -1,6 +1,5 @@
 package dao;
 
-import dao.base.DAO;
 import dao.connection.DatabaseConnection;
 import model.Matricula;
 import org.apache.commons.dbutils.DbUtils;

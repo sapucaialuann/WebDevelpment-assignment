@@ -2,7 +2,6 @@ package model;
 
 import lombok.Getter;
 import lombok.Setter;
-import model.base.Entity;
 
 @Getter
 @Setter

@@ -1,4 +1,4 @@
-package servlet;
+package controller;
 
 import dao.AlunoDAO;
 import model.Aluno;
@@ -9,11 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Arrays;
 
 @WebServlet("/registro")
-public class RegistroServlet extends HttpServlet {
+public class RegistroController extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/WEB-INF/registro.jsp").forward(req, resp);
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,16 +35,12 @@ public class RegistroServlet extends HttpServlet {
         aluno.setCep(req.getParameter("cep"));
         aluno.setComentario(req.getParameter("comentario"));
 
-        try (PrintWriter out = resp.getWriter()) {
-            if (dao.saveOrUpdate(aluno)) {
-                out.println("Aluno salvo com sucesso");
-
-            } else {
-                out.println("Aluno não pode ser salvo");
-            }
-
-            resp.setHeader("Refresh", "3; url=index.jsp");
+        if (dao.saveOrUpdate(aluno)) {
+            req.setAttribute("mensagem", "Registro realizado com sucesso");
+        } else {
+            req.setAttribute("mensagem", "Ocorreu um erro no registro");
         }
-    }
 
+        req.getRequestDispatcher("/WEB-INF/registro.jsp").forward(req, resp);
+    }
 }

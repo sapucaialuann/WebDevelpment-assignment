@@ -1,6 +1,6 @@
 package filter;
 
-import model.base.Usuario;
+import model.Usuario;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -9,8 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter({"/login.jsp", "/login"})
+@WebFilter("/login")
 public class SessionFilter implements Filter {
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+
+    }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -20,10 +25,15 @@ public class SessionFilter implements Filter {
         Usuario user = (Usuario) session.getAttribute("user");
 
         if (user != null) {
-            resp.sendRedirect("/index.jsp");
+            resp.sendRedirect("/");
+        } else {
+            chain.doFilter(request, response);
         }
+    }
 
-        chain.doFilter(request, response);
+    @Override
+    public void destroy() {
+
     }
 
 }

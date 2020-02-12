@@ -1,8 +1,8 @@
-package dao.base;
+package dao;
 
 import dao.connection.DatabaseConnection;
 import enums.TipoUsuario;
-import model.base.Usuario;
+import model.Usuario;
 import org.apache.commons.dbutils.DbUtils;
 import org.mindrot.jbcrypt.BCrypt;
 

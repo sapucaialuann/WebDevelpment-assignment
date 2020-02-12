@@ -1,7 +1,7 @@
-package dao.base;
+package dao;
 
 import dao.connection.DatabaseConnection;
-import model.base.Entity;
+import model.Entity;
 import org.apache.commons.dbutils.DbUtils;
 
 import java.sql.Connection;

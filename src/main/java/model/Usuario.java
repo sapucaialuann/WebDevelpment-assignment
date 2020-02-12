@@ -1,9 +1,8 @@
-package model.base;
+package model;
 
 import enums.TipoUsuario;
 import lombok.Getter;
 import lombok.Setter;
-import model.base.Entity;
 import org.mindrot.jbcrypt.BCrypt;
 
 @Getter

@@ -1,9 +1,7 @@
 package dao;
 
-import dao.base.DAO;
 import dao.connection.DatabaseConnection;
 import model.Curso;
-import model.Instrutor;
 import org.apache.commons.dbutils.DbUtils;
 
 import java.sql.Connection;

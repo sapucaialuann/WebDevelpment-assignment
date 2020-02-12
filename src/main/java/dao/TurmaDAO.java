@@ -1,6 +1,5 @@
 package dao;
 
-import dao.base.DAO;
 import dao.connection.DatabaseConnection;
 import model.Turma;
 import org.apache.commons.dbutils.DbUtils;

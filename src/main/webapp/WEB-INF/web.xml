@@ -4,4 +4,16 @@
 
 <web-app>
   <display-name>Cursos Lero Lero</display-name>
+  <servlet>
+    <servlet-name>IndexController</servlet-name>
+    <servlet-class>controller.IndexController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IndexController</servlet-name>
+    <url-pattern></url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IndexController</servlet-name>
+    <url-pattern>/index</url-pattern>
+  </servlet-mapping>
 </web-app>

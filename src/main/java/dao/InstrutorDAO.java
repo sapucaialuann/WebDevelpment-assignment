@@ -1,10 +1,9 @@
 package dao;
 
-import dao.base.LoginDAO;
 import dao.connection.DatabaseConnection;
 import enums.TipoUsuario;
 import model.Instrutor;
-import model.base.Usuario;
+import model.Usuario;
 import org.apache.commons.dbutils.DbUtils;
 
 import java.sql.Connection;

@@ -14,7 +14,6 @@ public class DatabaseConnection {
             conn = DriverManager.getConnection("jdbc:mysql://localhost/lerolero", "root", "");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-            System.exit(1);
         }
 
         return conn;
