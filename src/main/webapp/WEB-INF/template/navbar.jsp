@@ -3,7 +3,7 @@
 <%@ page import="enums.TipoUsuario" %>
 <% Usuario user = (Usuario) request.getSession().getAttribute("user");%>
 <header class="navbar navbar-expand-lg navbar-light bg-light header-home">
-    <a class="navbar-brand" href="index"><img src="../../assets/img/lerolerologo.png"
+    <a class="navbar-brand" href="/index"><img src="../../assets/img/lerolerologo.png"
                                               alt="Logo da empresa Lero Lero"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
