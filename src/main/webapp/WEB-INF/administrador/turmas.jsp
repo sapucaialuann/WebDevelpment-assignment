@@ -31,6 +31,8 @@
                     <td>Mark</td>
                     <td>Otto</td>
                     <td>@mdo</td>
+                    <td><button type="button" class="btn btn-outline-primary">Editar</button>
+                        <button type="button" class="btn btn-outline-danger">Deletar</button></td>
                 </tr>
             </tbody>
         </table>
