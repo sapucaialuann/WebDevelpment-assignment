@@ -15,6 +15,7 @@
 	<a href="/administrador/turmas">Turmas</a>
 	<a href="/administrador/instrutores">Instrutores</a>
 	<a href="/administrador/alunos">Alunos/a>
+	<a href="/administrador/notas">Notas/a>
 
 	<!-- Matrículas
 	<div class="container">
