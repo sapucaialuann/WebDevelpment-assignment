@@ -1,0 +1,52 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+header a img {
+    margin-left: 15px;
+    max-height: 40px;
+}
+
+.carousel-item img {
+    opacity: 0.6;
+    overflow: hidden;
+    max-height:500px;
+    width: auto;
+    height: auto;
+}
+
+.card-course {
+    background-color: #fafafa;
+    border: 2px solid #0066cc;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.card img {
+    height: 200px;
+    overflow: hidden;
+}
+
+.classes-list {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+
+section .card-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media screen and (max-width: 599px) {
+    .carousel-item img {
+        height: 300px;
+    }
+}
+@media screen and (min-width: 600px ) and (max-width: 768px) {
+    .carousel-item img {
+        height: 300px;
+    }
+}
