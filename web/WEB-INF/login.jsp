@@ -11,12 +11,12 @@
         <form method="POST" action="login">
             <h2>Login</h2>
             <div class="form-group ">
-                <label for="username">Login</label>
-                <input type="text" name="login" id="username" class="form-control" required>
+                <label>Login *</label>
+                <input type="text" name="login" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Senha</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name="senha">
+                <label>Senha *</label>
+                <input type="password" class="form-control" required name="senha">
             </div>
             <div class="form-group">
                 <label for="tipo">Tipo</label>

@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -25,9 +26,9 @@ public class CursoDAO extends DAO<Curso> {
         PreparedStatement ps = null;
 
         if (entity.getId() == null) {
-            query = "INSERT INTO " + tableName + "(nome, requisito, ementa, carga_horaria, valor) VALUES (?, ?, ?, ?, ?)";
+            query = "INSERT INTO " + tableName + "(nome, requisito, ementa, carga_horaria, preco) VALUES (?, ?, ?, ?, ?)";
         } else {
-            query = "UPDATE " + tableName + " SET nome = ?, requisito = ?, ementa = ?, carga_horaria = ?, valor = ? WHERE id = ?";
+            query = "UPDATE " + tableName + " SET nome = ?, requisito = ?, ementa = ?, carga_horaria = ?, preco = ? WHERE id = ?";
         }
 
         try {
@@ -35,8 +36,18 @@ public class CursoDAO extends DAO<Curso> {
             ps.setString(1, entity.getNome());
             ps.setString(2, entity.getRequisito());
             ps.setString(3, entity.getEmenta());
-            ps.setShort(4, entity.getCargaHoraria());
-            ps.setDouble(5, entity.getValor());
+
+            if (entity.getCargaHoraria() != null) {
+                ps.setShort(4, entity.getCargaHoraria());
+            } else {
+                ps.setNull(4, Types.SMALLINT);
+            }
+
+            if (entity.getPreco() != null) {
+                ps.setDouble(5, entity.getPreco());
+            } else {
+                ps.setNull(5, Types.DOUBLE);
+            }
 
             if (entity.getId() != null) {
                 ps.setLong(6, entity.getId());
@@ -75,7 +86,7 @@ public class CursoDAO extends DAO<Curso> {
                 entity.setRequisito(rs.getString("requisito"));
                 entity.setEmenta(rs.getString("ementa"));
                 entity.setCargaHoraria(rs.getShort("carga_horaria"));
-                entity.setValor(rs.getDouble("valor"));
+                entity.setPreco(rs.getDouble("preco"));
 
                 return Optional.of(entity);
             } else {
@@ -113,7 +124,7 @@ public class CursoDAO extends DAO<Curso> {
                 entity.setRequisito(rs.getString("requisito"));
                 entity.setEmenta(rs.getString("ementa"));
                 entity.setCargaHoraria(rs.getShort("carga_horaria"));
-                entity.setValor(rs.getDouble("valor"));
+                entity.setPreco(rs.getDouble("preco"));
 
                 list.add(entity);
             }
@@ -126,6 +137,28 @@ public class CursoDAO extends DAO<Curso> {
         }
 
         return list;
+    }
+
+    @Override
+    public boolean delete(Long id) {
+        String query = "DELETE FROM turmas WHERE instrutores_id = ?";
+        PreparedStatement ps = null;
+        Connection conn = DatabaseConnection.getConn();
+
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setLong(1, id);
+            ps.execute();
+
+            return super.delete(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+            return false;
+        } finally {
+            DbUtils.closeQuietly(conn);
+            DbUtils.closeQuietly(ps);
+        }
     }
 
 }

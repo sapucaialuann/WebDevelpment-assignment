@@ -21,7 +21,7 @@ public abstract class LoginDAO<T extends Usuario> extends DAO<T> {
     public abstract Optional<Usuario> login(String login, String password);
 
     protected Optional<Usuario> login(String login, String password, TipoUsuario tipo) {
-        String query = "SELECT * FROM " + tableName + " WHERE login = ?";
+        String query = "SELECT id, nome, login, senha FROM " + tableName + " WHERE login = ?";
         Connection conn = DatabaseConnection.getConn();
         PreparedStatement ps = null;
         ResultSet rs = null;

@@ -31,12 +31,27 @@ public class TurmaDAO extends DAO<Turma> {
             ps = conn.prepareStatement(query);
             ps.setLong(1, entity.getInstrutor().getId());
             ps.setLong(2, entity.getCurso().getId());
-            ps.setDate(3, new Date(entity.getDataInicio().getTime()));
-            ps.setDate(4, new Date(entity.getDataFinal().getTime()));
-            ps.setShort(5, entity.getCargaHoraria());
+            
+            if (entity.getDataInicio() == null) {
+                ps.setNull(3, Types.DATE);
+            } else {
+                ps.setDate(3, new Date(entity.getDataInicio().getTime()));
+            }
+            
+            if (entity.getDataFinal() == null) {
+                ps.setNull(4, Types.DATE);
+            } else {
+                ps.setDate(4, new Date(entity.getDataFinal().getTime()));
+            }
+
+            if (entity.getCargaHoraria() == null) {
+                ps.setNull(5, Types.SMALLINT);
+            } else {
+                ps.setShort(5, entity.getCargaHoraria());
+            }
 
             if (entity.getId() != null) {
-                ps.setLong(5, entity.getId());
+                ps.setLong(6, entity.getId());
                 ps.executeUpdate();
             } else {
                 ps.execute();
@@ -81,7 +96,6 @@ public class TurmaDAO extends DAO<Turma> {
             } else {
                 return Optional.empty();
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
 

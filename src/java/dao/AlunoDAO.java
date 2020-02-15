@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,16 +34,22 @@ public class AlunoDAO extends LoginDAO<Aluno> {
         PreparedStatement ps = null;
 
         if (entity.getId() == null) {
-            query = "INSERT INTO " + tableName + "(nome, login, senha, cpf, email, celular, endereco, cidade, bairro, cep, comentario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            query = "INSERT INTO " + tableName + "(nome, login, senha, cpf, email, celular, endereco, cidade, bairro, cep, comentario, aprovado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         } else {
-            query = "UPDATE " + tableName + " SET nome = ?, login = ?, senha = ?, cpf = ?, email = ?, celular = ?, endereco = ?, cidade = ?, bairro = ?, cep = ?, comentario = ? WHERE id = ?";
+            query = "UPDATE " + tableName + " SET nome = ?, login = ?, senha = ?, cpf = ?, email = ?, celular = ?, endereco = ?, cidade = ?, bairro = ?, cep = ?, comentario = ?, aprovado = ? WHERE id = ?";
         }
 
         try {
             ps = conn.prepareStatement(query);
             ps.setString(1, entity.getNome());
             ps.setString(2, entity.getLogin());
-            ps.setString(3, entity.hashPassword());
+            
+            if (!entity.getSenha().contains("$2a$")) {
+                ps.setString(3, entity.hashPassword());
+            } else {
+                ps.setString(3, entity.getSenha());
+            }
+            
             ps.setString(4, entity.getCpf());
             ps.setString(5, entity.getEmail());
             ps.setString(6, entity.getCelular());
@@ -51,9 +58,10 @@ public class AlunoDAO extends LoginDAO<Aluno> {
             ps.setString(9, entity.getBairro());
             ps.setString(10, entity.getCep());
             ps.setString(11, entity.getComentario());
+            ps.setString(12, entity.getAprovado().valor);
 
             if (entity.getId() != null) {
-                ps.setLong(12, entity.getId());
+                ps.setLong(13, entity.getId());
                 ps.executeUpdate();
             } else {
                 ps.execute();
@@ -96,7 +104,12 @@ public class AlunoDAO extends LoginDAO<Aluno> {
                 entity.setBairro(rs.getString("bairro"));
                 entity.setCep(rs.getString("cep"));
                 entity.setComentario(rs.getString("comentario"));
-                entity.setAprovado(Aprovacao.valueOf(rs.getString("aprovacao").toUpperCase()));
+                
+                for (Aprovacao a : Aprovacao.values()) {
+                    if (a.valor.equals(rs.getString("aprovado"))) {
+                        entity.setAprovado(a);
+                    }
+                }
 
                 return Optional.of(entity);
             } else {
@@ -141,7 +154,12 @@ public class AlunoDAO extends LoginDAO<Aluno> {
                 entity.setBairro(rs.getString("bairro"));
                 entity.setCep(rs.getString("cep"));
                 entity.setComentario(rs.getString("comentario"));
-                entity.setAprovado(Aprovacao.valueOf(rs.getString("aprovacao").toUpperCase()));
+                
+                for (Aprovacao a : Aprovacao.values()) {
+                    if (a.valor.equals(rs.getString("aprovado"))) {
+                        entity.setAprovado(a);
+                    }
+                }
 
                 list.add(entity);
             }
@@ -155,5 +173,47 @@ public class AlunoDAO extends LoginDAO<Aluno> {
 
         return list;
     }
+    
+    public List<Aluno> findByAprovacao(Aprovacao aprovacao) {
+        String query = "SELECT * FROM " + tableName + " WHERE aprovado = ?";
+        Connection conn = DatabaseConnection.getConn();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Aluno> list = new ArrayList<>();
 
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setString(1, aprovacao.valor);
+            rs = ps.executeQuery();
+            Aluno entity;
+
+            while (rs.next()) {
+                entity = new Aluno();
+                entity.setId(rs.getLong("id"));
+                entity.setLogin(rs.getString("login"));
+                entity.setNome(rs.getString("nome"));
+                entity.setSenha(rs.getString("senha"));
+                entity.setCpf(rs.getString("cpf"));
+                entity.setEmail(rs.getString("email"));
+                entity.setCelular(rs.getString("celular"));
+                entity.setEndereco(rs.getString("endereco"));
+                entity.setCidade(rs.getString("cidade"));
+                entity.setBairro(rs.getString("bairro"));
+                entity.setCep(rs.getString("cep"));
+                entity.setComentario(rs.getString("comentario"));
+                entity.setAprovado(aprovacao);
+
+                list.add(entity);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DbUtils.closeQuietly(conn);
+            DbUtils.closeQuietly(ps);
+            DbUtils.closeQuietly(rs);
+        }
+
+        return list;
+    }
+    
 }

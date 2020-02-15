@@ -6,7 +6,7 @@ public class Curso extends Entity {
     private String requisito;
     private String ementa;
     private Short cargaHoraria;
-    private Double valor;
+    private Double preco;
 
     public String getNome() {
         return nome;
@@ -40,12 +40,12 @@ public class Curso extends Entity {
         this.cargaHoraria = cargaHoraria;
     }
 
-    public Double getValor() {
-        return valor;
+    public Double getPreco() {
+        return preco;
     }
 
-    public void setValor(Double valor) {
-        this.valor = valor;
+    public void setPreco(Double preco) {
+        this.preco = preco;
     }
     
 }

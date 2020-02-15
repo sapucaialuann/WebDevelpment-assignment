@@ -52,11 +52,7 @@ public class LoginController extends HttpServlet {
                 resp.sendRedirect("/");
 
                 return;
-            } else {
-                req.setAttribute("mensagem", "Login ou senha incorretos");
             }
-        } else {
-            req.setAttribute("mensagem", "Os parâmetros requeridos não foram passados");
         }
 
         req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);

@@ -5,3 +5,4 @@
 <a href="/administrador/instrutores">Instrutores</a>
 <a href="/administrador/alunos">Alunos</a>
 <a href="/administrador/notas">Notas</a>
+<a href="/administrador/aprovacao">Aprovação</a>

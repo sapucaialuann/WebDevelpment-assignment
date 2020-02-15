@@ -33,14 +33,8 @@ public class RegistroController extends HttpServlet {
         aluno.setCidade(req.getParameter("cidade"));
         aluno.setBairro(req.getParameter("bairro"));
         aluno.setCep(req.getParameter("cep"));
-        aluno.setComentario(req.getParameter("comentario"));
 
-        if (dao.saveOrUpdate(aluno)) {
-            req.setAttribute("mensagem", "Registro realizado com sucesso");
-        } else {
-            req.setAttribute("mensagem", "Ocorreu um erro no registro");
-        }
-
+        dao.saveOrUpdate(aluno);
         req.getRequestDispatcher("/WEB-INF/registro.jsp").forward(req, resp);
     }
 }

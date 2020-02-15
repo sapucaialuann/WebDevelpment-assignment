@@ -25,7 +25,6 @@
                         <th scope="col">Cidade</th>
                         <th scope="col">Bairro</th>
                         <th scope="col">CEP</th>
-                        <th scope="col">Aprovado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,12 +41,11 @@
                         <td><%=a.getCidade()%></td>
                         <td><%=a.getBairro()%></td>
                         <td><%=a.getCep()%></td>
-                        <td><%=a.getAprovado().valor%></td>
                         <td>
-                            <a href="/administrador/aluno?id=<%=a.getId()%>">
-                                <button type="button" class="btn btn-outline-primary">Editar</button>
+                            <a href="/administrador/aprovacao?id=<%=a.getId()%>&op=aprovar">
+                                <button type="button" class="btn btn-outline-primary">Aprovar</button>
                             </a>  
-                            <a href="/administrador/alunos?id=<%=a.getId()%>">
+                            <a href="/administrador/aprovacao?id=<%=a.getId()%>&op=deletar">
                                 <button type="button" class="btn btn-outline-danger">Deletar</button>
                             </a>
                         </td>

@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -41,9 +42,21 @@ public class InstrutorDAO extends LoginDAO<Instrutor> {
             ps = conn.prepareStatement(query);
             ps.setString(1, entity.getNome());
             ps.setString(2, entity.getLogin());
-            ps.setString(3, entity.hashPassword());
+            
+            if (!entity.getSenha().contains("$2a$")) {
+                ps.setString(3, entity.hashPassword());
+            } else {
+                ps.setString(3, entity.getSenha());
+            }
+            
             ps.setString(4, entity.getEmail());
-            ps.setInt(5, entity.getValorHora());
+            
+            if (entity.getValorHora() != null) {
+                ps.setInt(5, entity.getValorHora());
+            } else {
+                ps.setNull(5, Types.INTEGER);
+            }
+            
             ps.setString(6, entity.getExperiencia());
 
             if (entity.getId() != null) {
@@ -90,7 +103,6 @@ public class InstrutorDAO extends LoginDAO<Instrutor> {
             } else {
                 return Optional.empty();
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
 
@@ -138,4 +150,26 @@ public class InstrutorDAO extends LoginDAO<Instrutor> {
         return list;
     }
 
+    @Override
+    public boolean delete(Long id) {
+        String query = "DELETE FROM turmas WHERE instrutores_id = ?";
+        PreparedStatement ps = null;
+        Connection conn = DatabaseConnection.getConn();
+
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setLong(1, id);
+            ps.execute();
+
+            return super.delete(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+            return false;
+        } finally {
+            DbUtils.closeQuietly(conn);
+            DbUtils.closeQuietly(ps);
+        }
+    }
+    
 }

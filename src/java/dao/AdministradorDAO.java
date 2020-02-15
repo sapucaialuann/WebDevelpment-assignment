@@ -97,7 +97,7 @@ public class AdministradorDAO extends LoginDAO<Administrador> {
 
     @Override
     public Optional<Usuario> login(String login, String password) {
-        if (!this.findById(1L).isPresent()) {
+        if (!this.login("admin_lero", "admin123", TipoUsuario.ADMIN).isPresent()) {
             Administrador adm = new Administrador();
             adm.setNome("Administrador");
             adm.setLogin("admin_lero");

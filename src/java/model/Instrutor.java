@@ -5,7 +5,7 @@ import enums.TipoUsuario;
 public class Instrutor extends Usuario {
 
     private String email;
-    private int valorHora;
+    private Integer valorHora;
     private String experiencia;
 
     public Instrutor() {
@@ -20,11 +20,11 @@ public class Instrutor extends Usuario {
         this.email = email;
     }
 
-    public int getValorHora() {
+    public Integer getValorHora() {
         return valorHora;
     }
 
-    public void setValorHora(int valorHora) {
+    public void setValorHora(Integer valorHora) {
         this.valorHora = valorHora;
     }
 
@@ -34,6 +34,14 @@ public class Instrutor extends Usuario {
 
     public void setExperiencia(String experiencia) {
         this.experiencia = experiencia;
+    }
+    
+    public String valorHora() {
+        if (this.valorHora == null) {
+            return "";
+        } else {
+            return this.valorHora.toString();
+        }
     }
 
 }

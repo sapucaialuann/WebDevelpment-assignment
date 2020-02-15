@@ -1,3 +1,5 @@
+<%@page import="model.Instrutor"%>
+<%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 
@@ -9,7 +11,6 @@
     <body>
         <jsp:include page="../template/navbar.jsp" />
         <jsp:include page="../template/admin-navbar.jsp"/>
-        <!-- Instrutores -->
         <div class="container">
             <h2>Instrutores</h2>
             <table class="table table-responsive table-hover table-striped table-bordered">
@@ -20,54 +21,29 @@
                         <th scope="col">Email</th>
                         <th scope="col">Valor/Hora</th>
                         <th scope="col">Login</th>
-                        <th scope="col">Senha</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <% List<Instrutor> instrutores = (List<Instrutor>) request.getAttribute("instrutores");
+                    for (Instrutor i : instrutores) {%>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td><button type="button" class="btn btn-outline-primary">Editar</button>
-                            <button type="button" class="btn btn-outline-danger">Deletar</button></td>
+                        <th scope="row"><%=i.getId()%></th>
+                        <td><%=i.getNome()%></td>
+                        <td><%=i.getEmail()%></td>
+                        <td>R$ <%=i.valorHora()%></td>
+                        <td><%=i.getLogin()%></td>
+                        <td>
+                            <a href="/administrador/instrutor?id=<%=i.getId()%>">
+                                <button type="button" class="btn btn-outline-primary">Editar</button>
+                            </a>  
+                            <a href="/administrador/instrutores?id=<%=i.getId()%>">
+                                <button type="button" class="btn btn-outline-danger">Deletar</button>
+                            </a>
+                        </td>
                     </tr>
+                    <%}%>
                 </tbody>
             </table>
-
-            <h3>Cadastrar Instrutor:</h3>
-            <section class="mb-5 w-75 p-5 section-login">
-                <form class="needs-validation" id="instrutores-form">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Nome</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="Nome" required minlength="3" maxlength="50">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Email</label>
-                        <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email" required
-                               minlength="3" maxlength="50">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Valor/Hora</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Valor/Hora"
-                               minlength="3" maxlength="10">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Login</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Login" required
-                               minlength="3" maxlength="20">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Senha</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" required
-                               minlength="3" maxlength="255">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </section>
         </div>
         <jsp:include page="../template/footer.jsp" />
     </body>

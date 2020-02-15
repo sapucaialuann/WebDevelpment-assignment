@@ -1,11 +1,11 @@
+<%@page import="model.Turma"%>
+<%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
-
     <head>
         <jsp:include page="../template/head.jsp" />
         <link rel="stylesheet" type="text/css" href="../../assets/css/register.css">
     </head>
-
     <body>
         <jsp:include page="../template/navbar.jsp" />
         <jsp:include page="../template/admin-navbar.jsp"/>
@@ -24,52 +24,28 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <% List<Turma> turmas = (List<Turma>) request.getAttribute("turmas");
+                    for (Turma t : turmas) {%>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Mark</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td><button type="button" class="btn btn-outline-primary">Editar</button>
-                            <button type="button" class="btn btn-outline-danger">Deletar</button></td>
+                        <th scope="row"><%=t.getId()%></th>
+                        <td><%=t.getInstrutor().getId()%></td>
+                        <td><%=t.getCurso().getId()%></td>
+                        <td><%=t.getDataInicio()%></td>
+                        <td><%=t.getDataFinal()%></td>
+                        <td><%=t.getCargaHoraria()%></td>
+                        <td>
+                            <a href="/administrador/turma?id=<%=t.getId()%>">
+                                <button type="button" class="btn btn-outline-primary">Editar</button>
+                            </a>  
+                            <a href="/administrador/turmas?id=<%=t.getId()%>">
+                                <button type="button" class="btn btn-outline-danger">Deletar</button>
+                            </a>
+                        </td>
                     </tr>
+                    <%}%>
                 </tbody>
             </table>
-
-            <h3>Cadastrar Turma:</h3>
-            <section class="mt-5 mb-5 w-75 p-5 section-login">
-                <form class="needs-validation" id="turmas-form">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Instutores ID</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               required minlength="3" maxlength="11">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Cursos ID</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" required minlength="3"
-                               maxlength="10">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Data Inicio</label>
-                        <input type="date" class="form-control" id="exampleInputPassword1" placeholder="Data de inicio"
-                               pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Data Fim</label>
-                        <input type="date" class="form-control" id="exampleInputPassword1" placeholder="Data de fim"
-                               pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">CH</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="C.H" minlength="3"
-                               maxlength="5">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </section>
         </div>
         <jsp:include page="../template/footer.jsp" />
     </body>
-
 </html>
