@@ -1,0 +1,81 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<html>
+<head>
+	<jsp:include page="template/head.jsp"/>
+	<link rel="stylesheet" type="text/css" href="../assets/css/register.css">
+</head>
+<body>
+	<jsp:include page="template/navbar.jsp"/>
+	<main class="mt-5 mb-5 w-75 p-5 section-login">
+		<form class="needs-validation" id="form-register" method="POST" action="/registro">
+			<h2>Registro</h2>
+			<div class="form-group">
+				<label form="form-register">Nome *</label>
+				<input type="text" class="form-control" minlength="3" maxlength="50" required name="nome">
+				<div class="valid-feedback">
+					Looks good!
+				</div>
+			</div>
+			<div class="form-group ">
+				<label form="form-register">Login *</label>
+				<input type="text" class="form-control" required minlength="3" maxlength="20" name="login">
+				<div class="valid-feedback">
+					Looks good!
+				</div>
+			</div>
+			<div class="form-group ">
+				<label form="form-register">Senha *</label>
+				<input type="password" class="form-control" required minlength="6" maxlength="20" name="senha">
+				<div class="valid-feedback">
+					Looks good!
+				</div>
+			</div>
+			<div class="form-group ">
+				<label form="form-register">CPF *</label>
+				<input type="text" class="form-control" pattern="\d{11}" placeholder="Ex: 99999999999" 
+                                       required name="cpf">
+				<div class="valid-feedback">
+					Looks good!
+				</div>
+			</div>
+			<div class="form-group ">
+				<label form="form-register">Email *</label>
+				<input minlength="3" maxlength="50" type="email" class="form-control"
+					pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required name="email">
+			</div>
+			<div class="form-group">
+				<label form="form-register">Celular *</label>
+                                    <input type="text" class="form-control cel-sp-mask" pattern="\(\d{2}\) \d{8,9}" 
+                                           placeholder="Ex: (99) 999999999" required name="celular">
+			</div>
+			<div class="form-row">
+				<div class="form-group">    
+					<label for="cep">CEP</label>
+					<input class="form-control" id="cep" type="text" placeholder="Ex: 99999-999"
+                                               pattern="\d{5}\-\d{3}" name="cep"/>
+				</div>
+				<div class="form-group">
+					<label class=" form-margin-fix" for="logradouro">Endereço</label>
+					<input class="form-control  form-margin-fix" id="logradouro" type="text" minlength="3"
+						maxlength="50" name="endereco"/>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group">
+					<label for="bairro">Bairro</label>
+					<input class="form-control" id="bairro" type="text" name="bairro" maxlength="30"/>
+				</div>
+				<div class="form-group">
+					<label class=" form-margin-fix" for="cidade">Cidade</label>
+					<input class="form-control  form-margin-fix" id="cidade" type="text"
+                                               maxlength="30" name="cidade"/>
+				</div>
+			</div>
+
+			<button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+				type="submit">Cadastrar</button>
+		</form>
+	</main>
+	<jsp:include page="template/footer.jsp"/>
+</body>
+</html>
