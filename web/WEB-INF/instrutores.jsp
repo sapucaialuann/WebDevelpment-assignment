@@ -15,17 +15,18 @@
                     for (int i = 0; i < instrutores.size(); i++) {
                         Instrutor in = instrutores.get(i);
                 %>
-                <% if (i % 2 == 0 && !close) { close = true;%>
-                <div class="row">
-                    <% } else if ((i % 2 == 0 && close) || instrutores.size() - 1 == i) {  close = false; %>
+                <% if (i % 2 == 0 && close){ close = false;%>
                 </div>
+                <%} if (i % 2 == 0 && !close) { close = true;%>
+                <div class="row">
                 <%}%>
                 <div class="card" style="width: 18rem;">
                     <img src="/imagem?type=instrutores&filename=<%=in.getId()%>.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title"><%=in.getNome()%></h5>
-                        <p class="card-text"><%=in.getEmail()%></p>
-                        <p class="card-text">Valor/hora: R$ <%=in.valorHora()%></p>
+                        <p class="card-text">Email: <%=in.getEmail()%></p>
+                        <% if (in.getExperiencia() != null) {%><p class="card-text"><%=in.getExperiencia()%></p><%}%>
+                        <% if (in.getValorHora() != 0) {%><p class="card-text">Valor/hora: R$ <%=in.valorHora()%></p><%}%>
                     </div>
                 </div>
                 <%}%>

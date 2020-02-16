@@ -8,16 +8,14 @@
     </head>
     <body>
         <jsp:include page="../template/navbar.jsp" />
-        <jsp:include page="../template/admin-navbar.jsp"/>
-        <!-- Turmas -->
+        <jsp:include page="../template/aluno-navbar.jsp"/>
         <div class="container">
-            <h2>Turmas</h2>
+            <h2>Realizar matrícula</h2>
             <table class="table table-responsive table-hover table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">ID Instrutores</th>
-                        <th scope="col">ID Cursos</th>
+                        <th scope="col">Instrutor</th>
+                        <th scope="col">Curso</th>
                         <th scope="col">Data Início</th>
                         <th scope="col">Data Final</th>
                         <th scope="col">Carga horária</th>
@@ -25,31 +23,22 @@
                 </thead>
                 <tbody>
                     <% List<Turma> turmas = (List<Turma>) request.getAttribute("turmas");
-                        for (Turma t : turmas) {%>
+                    for (Turma t : turmas) {%>
                     <tr>
-                        <th scope="row"><%=t.getId()%></th>
-                        <td><%=t.getInstrutor().getId()%></td>
-                        <td><%=t.getCurso().getId()%></td>
+                        <td><%=t.getInstrutor().getNome()%></td>
+                        <td><%=t.getCurso().getNome()%></td>
                         <td><%=t.getDataInicio()%></td>
                         <td><%=t.getDataFinal()%></td>
                         <td><% if (t.getCargaHoraria() != 0) {%><%=t.getCargaHoraria()%><%}%></td>
                         <td>
-                            <a href="/administrador/turma?id=<%=t.getId()%>">
-                                <button type="button" class="btn btn-outline-primary">Editar</button>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="/administrador/turmas?id=<%=t.getId()%>">
-                                <button type="button" class="btn btn-outline-danger">Deletar</button>
+                            <a href="/aluno/matricula?id=<%=t.getId()%>">
+                                <button type="button" class="btn btn-outline-primary">Matricular</button>
                             </a>
                         </td>
                     </tr>
                     <%}%>
                 </tbody>
             </table>
-            <a href="/administrador/turma">
-                <button type="button" class="btn btn-outline-primary">Novo</button>
-            </a>    
         </div>
         <jsp:include page="../template/footer.jsp" />
     </body>

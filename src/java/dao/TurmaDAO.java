@@ -144,5 +144,103 @@ public class TurmaDAO extends DAO<Turma> {
 
         return list;
     }
+    
+    public List<Turma> findByNotAlunoId(Long id) {
+        String query = "SELECT * FROM " + tableName + " t WHERE NOT EXISTS(SELECT NULL FROM matriculas m JOIN turmas t2 ON m.turmas_id = t2.id WHERE m.alunos_id = ? AND t2.cursos_id = t.cursos_id)";
+        Connection conn = DatabaseConnection.getConn();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Turma> list = new ArrayList<>();
+
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setLong(1, id);
+            rs = ps.executeQuery();
+            Turma entity;
+            InstrutorDAO instrutorDAO = new InstrutorDAO();
+            CursoDAO cursoDAO = new CursoDAO();
+
+            while (rs.next()) {
+                entity = new Turma();
+
+                entity.setId(rs.getLong("id"));
+                entity.setInstrutor(instrutorDAO.findById(rs.getLong("instrutores_id")).get());
+                entity.setCurso(cursoDAO.findById(rs.getLong("cursos_id")).get());
+                entity.setDataInicio(rs.getDate("data_inicio"));
+                entity.setDataFinal(rs.getDate("data_final"));
+                entity.setCargaHoraria(rs.getShort("carga_horaria"));
+
+                list.add(entity);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DbUtils.closeQuietly(conn);
+            DbUtils.closeQuietly(ps);
+            DbUtils.closeQuietly(rs);
+        }
+
+        return list;
+    }
+    
+    public List<Turma> findByInstrutorId(Long id) {
+        String query = "SELECT * FROM " + tableName + " WHERE instrutores_id = ?";
+        Connection conn = DatabaseConnection.getConn();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Turma> list = new ArrayList<>();
+
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setLong(1, id);
+            rs = ps.executeQuery();
+            Turma entity;
+            InstrutorDAO instrutorDAO = new InstrutorDAO();
+            CursoDAO cursoDAO = new CursoDAO();
+
+            while (rs.next()) {
+                entity = new Turma();
+
+                entity.setId(rs.getLong("id"));
+                entity.setInstrutor(instrutorDAO.findById(rs.getLong("instrutores_id")).get());
+                entity.setCurso(cursoDAO.findById(rs.getLong("cursos_id")).get());
+                entity.setDataInicio(rs.getDate("data_inicio"));
+                entity.setDataFinal(rs.getDate("data_final"));
+                entity.setCargaHoraria(rs.getShort("carga_horaria"));
+
+                list.add(entity);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DbUtils.closeQuietly(conn);
+            DbUtils.closeQuietly(ps);
+            DbUtils.closeQuietly(rs);
+        }
+
+        return list;
+    }
+    
+    @Override
+    public boolean delete(Long id) {
+        String query = "DELETE FROM matriculas WHERE turmas_id = ?";
+        PreparedStatement ps = null;
+        Connection conn = DatabaseConnection.getConn();
+
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setLong(1, id);
+            ps.execute();
+
+            return super.delete(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+            return false;
+        } finally {
+            DbUtils.closeQuietly(conn);
+            DbUtils.closeQuietly(ps);
+        }
+    }
 
 }

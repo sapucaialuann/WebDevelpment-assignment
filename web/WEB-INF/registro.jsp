@@ -32,25 +32,27 @@
 			</div>
 			<div class="form-group ">
 				<label form="form-register">CPF *</label>
-				<input type="text" class="form-control" pattern="\d{11}" required name="cpf">
+				<input type="text" class="form-control" pattern="\d{11}" placeholder="Ex: 99999999999" 
+                                       required name="cpf">
 				<div class="valid-feedback">
 					Looks good!
 				</div>
 			</div>
 			<div class="form-group ">
 				<label form="form-register">Email *</label>
-				<input placeholder="email@email.com" minlength="3" maxlength="50" type="email" class="form-control"
+				<input minlength="3" maxlength="50" type="email" class="form-control"
 					pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required name="email">
 			</div>
 			<div class="form-group">
 				<label form="form-register">Celular *</label>
-				<input type="text" class="form-control cel-sp-mask" pattern="\d{10,11}" required name="celular">
+                                    <input type="text" class="form-control cel-sp-mask" pattern="\(\d{2}\) \d{8,9}" 
+                                           placeholder="Ex: (99) 999999999" required name="celular">
 			</div>
 			<div class="form-row">
 				<div class="form-group">    
 					<label for="cep">CEP</label>
-					<input class="form-control" id="cep" type="text"
-                                               pattern="\d{8}" name="cep"/>
+					<input class="form-control" id="cep" type="text" placeholder="Ex: 99999-999"
+                                               pattern="\d{5}\-\d{3}" name="cep"/>
 				</div>
 				<div class="form-group">
 					<label class=" form-margin-fix" for="logradouro">Endereço</label>
@@ -61,11 +63,12 @@
 			<div class="form-row">
 				<div class="form-group">
 					<label for="bairro">Bairro</label>
-					<input class="form-control" id="bairro" type="text" name="bairro"/>
+					<input class="form-control" id="bairro" type="text" name="bairro" maxlength="30"/>
 				</div>
 				<div class="form-group">
 					<label class=" form-margin-fix" for="cidade">Cidade</label>
-					<input class="form-control  form-margin-fix" id="cidade" type="text" name="cidade"/>
+					<input class="form-control  form-margin-fix" id="cidade" type="text"
+                                               maxlength="30" name="cidade"/>
 				</div>
 			</div>
 

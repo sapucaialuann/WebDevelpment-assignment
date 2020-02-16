@@ -216,4 +216,26 @@ public class AlunoDAO extends LoginDAO<Aluno> {
         return list;
     }
     
+    @Override
+    public boolean delete(Long id) {
+        String query = "DELETE FROM matriculas WHERE alunos_id = ?";
+        PreparedStatement ps = null;
+        Connection conn = DatabaseConnection.getConn();
+
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setLong(1, id);
+            ps.execute();
+
+            return super.delete(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+            return false;
+        } finally {
+            DbUtils.closeQuietly(conn);
+            DbUtils.closeQuietly(ps);
+        }
+    }
+    
 }

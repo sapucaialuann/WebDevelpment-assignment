@@ -11,17 +11,18 @@
         <jsp:include page="../template/instrutor-navbar.jsp"/>
         <% Instrutor i = (Instrutor) request.getAttribute("instrutor"); %>
         <div class="container">
-            <h3>Instrutor</h3>
             <section class="mb-5 w-75 p-5 section-login">
                 <form class="needs-validation" id="instrutores-form" method="POST" action="/instrutor/dados">
-                    <div class="form-group">
+                    <h2> Alterar dados </h2> 
+                   <div class="form-group">
                         <label>Nome *</label>
                         <input type="text" class="form-control" required minlength="3" maxlength="50"
                                value="<%if (i != null) {%><%=i.getNome()%><%}%>" name="nome">
                     </div>
                     <div class="form-group">
                         <label>Email *</label>
-                        <input type="email" class="form-control"required minlength="10" maxlength="50"
+                        <input type="email" class="form-control"required minlength="3" maxlength="50"
+                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                                value="<%if (i != null) {%><%=i.getEmail()%><%}%>" name="email">
                     </div>
                     <div class="form-group">
@@ -37,11 +38,12 @@
                     <div class="form-group">
                         <label>Experiência</label>
                         <br/>
-                        <textarea name="experiencia" form="instrutores-form" maxlength="255"><%if (i != null) {%><%=i.getExperiencia()%><%}%></textarea>
+                        <textarea name="experiencia" form="instrutores-form" maxlength="255"><%if (i != null && i.getExperiencia() != null) {%><%=i.getExperiencia()%><%}%></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Persistir</button>
                 </form>
             </section>
         </div>
+        <jsp:include page="../template/footer.jsp"/>
     </body>
 </html>

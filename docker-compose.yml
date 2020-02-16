@@ -12,4 +12,4 @@ services:
     environment:
       MYSQL_ROOT_USER: root
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-      MYSQL_DATABASE: lerolero
+      MYSQL_DATABASE: escola

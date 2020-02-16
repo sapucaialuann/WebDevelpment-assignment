@@ -12,13 +12,13 @@
             Curso c = (Curso) request.getAttribute("curso");
         %>
         <div class="container">
-            <h3>Curso</h3>
             <section class="mb-5 w-75 p-5 section-login">
                 <form class="needs-validation" id="cursos-form" method="POST" action="/administrador/curso">
+                    <h2> Curso </h2>
                     <% if (c != null) {%>
                     <input type="hidden" name="id" value="<%=c.getId()%>">
-                           <% } %>
-                           <div class="form-group">
+                    <% } %>
+                    <div class="form-group">
                         <label>Nome *</label>
                         <input type="text" class="form-control" required minlength="3" maxlength="50" 
                                name="nome" value="<%if (c != null) {%><%=c.getNome()%><%}%>">
@@ -34,14 +34,14 @@
                                value="<%if (c != null) {%><%=c.getEmenta()%><%}%>">
                     </div>
                     <div class="form-group">
-                        <label>Carga Horária</label>
+                        <label>Carga Horária (h)</label>
                         <input type="text" class="form-control" name="carga-horaria" pattern="\d{0,5}"
-                               value="<%if (c != null) {%><%=c.getCargaHoraria()%><%}%>">
+                               value="<%if (c != null && c.getCargaHoraria() != 0) {%><%=c.getCargaHoraria()%><%}%>">
                     </div>
                     <div class="form-group">
-                        <label>Preço</label>
+                        <label>Preço (R$)</label>
                         <input type="number" class="form-control" name="preco" step="any" min="0"
-                               value="<%if (c != null) {%><%=c.getPreco()%><%}%>">
+                               value="<%if (c != null && c.getPreco() != 0.0) {%><%=c.getPreco()%><%}%>">
                     </div>
                     <button type="submit" class="btn btn-primary">Persistir</button>
                 </form>

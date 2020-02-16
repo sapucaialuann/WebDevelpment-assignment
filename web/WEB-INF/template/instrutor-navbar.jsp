@@ -1,3 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<h1 class="mb-3">Funções</h1>
-<a href="/instrutor/dados">Alterar dados</a>
+<header class="navbar navbar-expand-lg navbar-light bg-light header-home">
+    <div>
+        <ul class="navbar-nav mr-auto justify-content-end">
+            <li class="nav-item"><a class="nav-link" href="/instrutor/dados">Alterar dados</a></li>
+            <li class="nav-item"><a class="nav-link" href="/instrutor/valor-total">Ver valor total</a></li>
+        </ul>
+    </div>
+</header>

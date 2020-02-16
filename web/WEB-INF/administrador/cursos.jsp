@@ -18,8 +18,8 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Requisito</th>
                         <th scope="col">Ementa</th>
-                        <th scope="col">Carga horária</th>
-                        <th scope="col">Preço</th>
+                        <th scope="col">Carga horária (h)</th>
+                        <th scope="col">Preço (R$)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,12 +31,14 @@
                         <td><%=c.getNome()%></td>
                         <td><%=c.getRequisito()%></td>
                         <td><%=c.getEmenta()%></td>
-                        <td><%=c.getCargaHoraria()%></td>
-                        <td>R$ <%=c.getPreco()%></td>
+                        <td><% if (c.getCargaHoraria() != 0) {%><%=c.getCargaHoraria()%><%}%></td>
+                        <td><% if (c.getPreco() != 0.0) {%>R$ <%=c.getPreco()%><%}%></td>
                         <td>
                             <a href="/administrador/curso?id=<%=c.getId()%>">
                                 <button type="button" class="btn btn-outline-primary">Editar</button>
-                            </a>  
+                            </a>
+                        </td>
+                        <td>
                             <a href="/administrador/cursos?id=<%=c.getId()%>">
                                 <button type="button" class="btn btn-outline-danger">Deletar</button>
                             </a>
@@ -45,6 +47,9 @@
                     <% }%>
                 </tbody>
             </table>
+            <a href="/administrador/curso">
+                <button type="button" class="btn btn-outline-primary">Novo</button>
+            </a>    
         </div>
         <jsp:include page="../template/footer.jsp" />
     </body>

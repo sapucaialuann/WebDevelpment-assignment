@@ -30,7 +30,7 @@
                 </thead>
                 <tbody>
                     <% List<Aluno> alunos = (List<Aluno>) request.getAttribute("alunos");
-                    for (Aluno a : alunos) { %>
+                        for (Aluno a : alunos) {%>
                     <tr>
                         <th scope="row"><%=a.getId()%></th>
                         <td><%=a.getCpf()%></td>
@@ -47,9 +47,13 @@
                             <a href="/administrador/aluno?id=<%=a.getId()%>">
                                 <button type="button" class="btn btn-outline-primary">Editar</button>
                             </a>  
+                        </td>
+                        <td>
                             <a href="/administrador/alunos?id=<%=a.getId()%>">
                                 <button type="button" class="btn btn-outline-danger">Deletar</button>
                             </a>
+                        </td>
+                        <td>
                             <a href="/administrador/foto-aluno?id=<%=a.getId()%>">
                                 <button type="button" class="btn btn-outline-info">Alterar Foto</button>
                             </a>
@@ -58,6 +62,9 @@
                     <%}%>
                 </tbody>
             </table>
+            <a href="/administrador/aluno">
+                <button type="button" class="btn btn-outline-primary">Novo</button>
+            </a>    
         </div>
         <jsp:include page="../template/footer.jsp" />
     </body>

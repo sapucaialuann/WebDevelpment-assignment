@@ -65,9 +65,13 @@
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title"><%=c.getNome()%></h5>
-                        <p class="card-text"><%=c.getEmenta()%></p>
+                        <% if (c.getEmenta() != null) {%><p class="card-text"><%=c.getEmenta()%></p><%}%>
+                        <% if (c.getPreco() != 0.0) {%>
                         <p class="card-text"><small class="text-muted">Preço: R$ <%=c.getPreco()%></small></p>
+                        <%}%>
+                        <% if (c.getCargaHoraria() != 0) {%>
                         <p class="card-text"><small class="text-muted">Carga horária: <%=c.getCargaHoraria()%>h</small></p>
+                        <%}%>
                     </div>
                 </div>
             </div>

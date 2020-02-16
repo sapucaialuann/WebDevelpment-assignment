@@ -8,15 +8,15 @@
     </head>
     <body>
         <jsp:include page="../template/navbar.jsp" />
-        <jsp:include page="../template/instrutor-navbar.jsp"/>
+        <jsp:include page="../template/admin-navbar.jsp"/>
         <% Instrutor i = (Instrutor) request.getAttribute("instrutor"); %>
         <div class="container">
-            <h3>Instrutor</h3>
             <section class="mb-5 w-75 p-5 section-login">
                 <form class="needs-validation" id="instrutores-form" method="POST" action="/administrador/instrutor">
+                    <h2> Instrutor </h2>
                     <% if (i != null) {%>
                     <input type="hidden" name="id" value="<%=i.getId()%>">
-                           <% } %>
+                    <% } %>
                     <div class="form-group">
                         <label>Nome *</label>
                         <input type="text" class="form-control" required minlength="3" maxlength="50"
@@ -45,7 +45,7 @@
                     <div class="form-group">
                         <label>Experiência</label>
                         <br/>
-                        <textarea name="experiencia" form="instrutores-form" maxlength="255"><%if (i != null) {%><%=i.getExperiencia()%><%}%></textarea>
+                        <textarea name="experiencia" form="instrutores-form" maxlength="255"><%if (i != null && i.getExperiencia() != null) {%><%=i.getExperiencia()%><%}%></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Persistir</button>
                 </form>

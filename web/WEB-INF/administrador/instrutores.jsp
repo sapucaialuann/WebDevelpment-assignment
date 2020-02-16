@@ -25,25 +25,35 @@
                 </thead>
                 <tbody>
                     <% List<Instrutor> instrutores = (List<Instrutor>) request.getAttribute("instrutores");
-                    for (Instrutor i : instrutores) {%>
+                        for (Instrutor i : instrutores) {%>
                     <tr>
                         <th scope="row"><%=i.getId()%></th>
                         <td><%=i.getNome()%></td>
                         <td><%=i.getEmail()%></td>
-                        <td>R$ <%=i.valorHora()%></td>
+                        <td><%if (i.getValorHora() != 0) {%>R$ <%=i.valorHora()%><%}%></td>
                         <td><%=i.getLogin()%></td>
                         <td>
                             <a href="/administrador/instrutor?id=<%=i.getId()%>">
                                 <button type="button" class="btn btn-outline-primary">Editar</button>
-                            </a>  
+                            </a>
+                        </td>
+                        <td>
                             <a href="/administrador/instrutores?id=<%=i.getId()%>">
                                 <button type="button" class="btn btn-outline-danger">Deletar</button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/administrador/foto-instrutor?id=<%=i.getId()%>">
+                                <button type="button" class="btn btn-outline-info">Alterar Foto</button>
                             </a>
                         </td>
                     </tr>
                     <%}%>
                 </tbody>
             </table>
+            <a href="/administrador/instrutor">
+                <button type="button" class="btn btn-outline-primary">Novo</button>
+            </a>    
         </div>
         <jsp:include page="../template/footer.jsp" />
     </body>

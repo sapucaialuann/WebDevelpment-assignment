@@ -20,7 +20,7 @@ public class ComentariosController extends HttpServlet {
         AlunoDAO dao = new AlunoDAO();
 
         req.setAttribute("alunos", dao.findAll().stream().filter(aluno -> aluno.getComentario() != null)
-                .sorted(Comparator.comparingLong(Aluno::getId).reversed()).limit(55)
+                .sorted(Comparator.comparingLong(Aluno::getId).reversed()).limit(5)
                 .collect(Collectors.toList()));
         req.getRequestDispatcher("/WEB-INF/comentarios.jsp").forward(req, resp);
     }

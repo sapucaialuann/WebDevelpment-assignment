@@ -7,7 +7,7 @@
 <body>
     <jsp:include page="../template/navbar.jsp" />
     <jsp:include page="../template/aluno-navbar.jsp"/>
-    <jsp:include page="../template/footer.jsp" />
+    <jsp:include page="../template/footer-fixed.jsp" />
 </body>
 
 </html>
