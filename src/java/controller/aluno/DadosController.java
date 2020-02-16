@@ -1,4 +1,4 @@
-package controller.administrador.alunos;
+package controller.aluno;
 
 import dao.AlunoDAO;
 import enums.Aprovacao;
@@ -10,35 +10,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import model.Aluno;
+import model.Usuario;
 
-@WebServlet("/administrador/aluno")
-public class AlunoController extends HttpServlet {
+@WebServlet("/aluno/dados")
+public class DadosController extends HttpServlet {
 
     AlunoDAO dao = new AlunoDAO();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String param = req.getParameter("id");
-
-        if (param != null) {
-            Long id = Long.valueOf(param);
-            dao.findById(id).ifPresent(a -> {
-                req.setAttribute("aluno", a);
-            });
-        }
+        Usuario user = (Usuario) req.getSession().getAttribute("user");
+        req.setAttribute("aluno", dao.findById(user.getId()).get());
         
-        req.getRequestDispatcher("/WEB-INF/administrador/aluno.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/aluno/dados.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String param = req.getParameter("id");
+        Usuario user = (Usuario) req.getSession().getAttribute("user");
         Aluno a = new Aluno();
 
-        if (param != null) {
-            a.setId(Long.valueOf(param));
-        }
-
+        a.setId(user.getId());
         a.setNome(req.getParameter("nome"));
         a.setLogin(req.getParameter("login"));
         a.setSenha(req.getParameter("senha"));
@@ -50,10 +42,11 @@ public class AlunoController extends HttpServlet {
         a.setBairro(req.getParameter("bairro"));
         a.setCep(req.getParameter("cep"));
         a.setComentario(req.getParameter("comentario"));
-        a.setAprovado(Aprovacao.APROVADO);
 
         dao.saveOrUpdate(a);
-        resp.sendRedirect("/administrador/alunos");
+        req.setAttribute("aluno", dao.findById(user.getId()));
+        
+        resp.sendRedirect("/aluno/dados");
     }
 
 }

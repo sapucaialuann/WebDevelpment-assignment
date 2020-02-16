@@ -71,6 +71,7 @@
                                    value="<%if (a != null) {%><%=a.getCidade()%><%}%>"/>
                         </div>
                     </div>
+                    <input type="hidden" value="<%if (a != null) {%><%=a.getComentario()%><%}%>"/>
 
                     <button class="btn btn-primary" type="submit">Persistir</button>
                 </form>

@@ -8,7 +8,7 @@
     </head>
     <body>
         <jsp:include page="../template/navbar.jsp" />
-        <jsp:include page="../template/admin-navbar.jsp"/>
+        <jsp:include page="../template/instrutor-navbar.jsp"/>
         <% Instrutor i = (Instrutor) request.getAttribute("instrutor"); %>
         <div class="container">
             <h3>Instrutor</h3>
