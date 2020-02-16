@@ -2,3 +2,4 @@
 <h1 class="mb-3">Funções</h1>
 <a href="/aluno/dados">Alterar dados</a>
 <a href="/aluno/comentario">Comentário</a>
+<a href="/aluno/foto">Alterar foto</a>

@@ -11,7 +11,8 @@ public class DatabaseConnection {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/lerolero", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/lerolero?useUnicode=yes&characterEncoding=UTF-8",
+                    "root", "");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }

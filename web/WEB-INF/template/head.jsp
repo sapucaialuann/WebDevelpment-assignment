@@ -7,6 +7,6 @@
 <link rel="stylesheet" type="text/css" href="../../assets/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/index.css">
 <script type="text/javascript" src="../../assets/js/jquery.js"></script>
-<script type="text/javascript" src="https://unpkg.com/@popperjs/core@2.0.0"></script>
+<script type="text/javascript" src="../../assets/js/popper.min.js"></script>
 <script type="text/javascript" src="../../assets/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../../assets/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -50,6 +50,9 @@
                             <a href="/administrador/alunos?id=<%=a.getId()%>">
                                 <button type="button" class="btn btn-outline-danger">Deletar</button>
                             </a>
+                            <a href="/administrador/foto-aluno?id=<%=a.getId()%>">
+                                <button type="button" class="btn btn-outline-info">Alterar Foto</button>
+                            </a>
                         </td>
                     </tr>
                     <%}%>

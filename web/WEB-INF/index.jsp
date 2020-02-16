@@ -1,3 +1,6 @@
+<%@page import="model.Turma"%>
+<%@page import="model.Curso"%>
+<%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -16,111 +19,75 @@
                 <div class="carousel-item active">
                     <img src="../assets/img/slide1.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h2 class="text-dark font-weight-bolder">First slide label</h2>
-                        <p class="text-dark font-weight-bold">Nulla vitae elit libero, a pharetra augue mollis interdum.
+                        <h2 class="text-dark font-weight-bolder">Aulas de qualidade</h2>
+                        <p class="text-dark font-weight-bold">
+                            Utilizamos uma metodologia de ensino que surpreenderá você e seu filho(a)
                         </p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="../assets/img/slide2.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h2 class="text-dark font-weight-bolder">Second slide label</h2>
-                        <p class="text-dark font-weight-bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        <h2 class="text-dark font-weight-bolder">Equipe preparada</h2>
+                        <p class="text-dark font-weight-bold">
+                            Temos disponíveis os melhores instrutores para alavancar o conhecimento de nossos alunos
                         </p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="../assets/img/slide3.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h2 class="text-dark font-weight-bolder">Third slide label</h2>
-                        <p class="text-dark font-weight-bold">Praesent commodo cursus magna, vel scelerisque nisl
-                            consectetur.</p>
+                        <h2 class="text-dark font-weight-bolder">Ambiente confortável</h2>
+                        <p class="text-dark font-weight-bold">
+                            Salas interativas, regalias e passa-tempos
+                        </p>
                     </div>
                 </div>
             </div>
             <a class="carousel-control-prev button-carousel" href="#carouselExampleCaptions" role="button"
                 data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+                <span class="sr-only">Anterior</span>
             </a>
             <a class="carousel-control-next button-carousel" href="#carouselExampleCaptions" role="button"
                 data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
+                <span class="sr-only">Próximo</span>
             </a>
         </div>
     </main>
     <section class="card-list">
-        <h2 class="font-weight-bold text-center mb-5">Nossos cursos:</h2>
+        <h2 class="font-weight-bold text-center mb-5">Alguns de nossos cursos</h2>
+        <% List<Curso> cursos = (List<Curso>) request.getAttribute("cursos");
+        for (Curso c : cursos) {%>
         <div class="card mb-4 card-course" style="max-width: 800px;">
             <div class="row no-gutters">
-                <div class="col-md-4">
-                    <img src="../assets/img/slide3.jpg" class="card-img" alt="...">
-                </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title"><%=c.getNome()%></h5>
+                        <p class="card-text"><%=c.getEmenta()%></p>
+                        <p class="card-text"><small class="text-muted">Preço: R$ <%=c.getPreco()%></small></p>
+                        <p class="card-text"><small class="text-muted">Carga horária: <%=c.getCargaHoraria()%>h</small></p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="card mb-4 card-course" style="max-width: 800px;">
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                    <img src="../assets/img/slide2.jpg" class="card-img" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <%}%>
     </section>
     <section>
-        <h2 class="font-weight-bold text-center mb-5">Nossas turmas:</h2>
+        <h2 class="font-weight-bold text-center mb-5">Algumas de nossas turmas</h2>
         <div class="row classes-list">
+            <% List<Turma> turmas = (List<Turma>) request.getAttribute("turmas");
+            for (Turma t : turmas) {%>
             <div class="mb-4 sm-6">
                 <div class="card" style="width: 18rem;">
-                    <img src="../assets/img/slide3.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title"><%=t.getCurso().getNome()%></h5>
+                        <p class="card-text"><%=t.getInstrutor().getNome()%></p>
                     </div>
                 </div>
             </div>
-            <div class="mb-4 sm-6">
-                <div class="card" style="width: 18rem;">
-                    <img src="../assets/img/slide3.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="mb-4 sm-6">
-                <div class="card" style="width: 18rem;">
-                    <img src="../assets/img/slide3.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
+            <%}%>
         </div>
     </section>
     <jsp:include page="template/footer.jsp"/>

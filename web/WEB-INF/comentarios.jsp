@@ -1,3 +1,5 @@
+<%@page import="model.Aluno"%>
+<%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -6,15 +8,16 @@
 </head>
 <body>
     <jsp:include page="template/navbar.jsp"/>
+    <% List<Aluno> alunos = (List<Aluno>) request.getAttribute("alunos");
+    for (Aluno a : alunos) {%>
     <div class="media">
-        <img src="../assets/img/ronaldinho.jpg" class="mr-3" alt="...">
+        <img src="/imagem?type=alunos&filename=<%=a.getId()%>.jpg" class="mr-3" alt="...">
         <div class="media-body">
-            <h5 class="mt-0">Media heading</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-            vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-            lacinia congue felis in faucibus.
+            <h5 class="mt-0"><%=a.getNome()%></h5>
+            <%=a.getComentario()%>
         </div>
     </div>
+    <%}%>
     <jsp:include page="template/footer-fixed.jsp"/>
 </body>
 </html>

@@ -4,7 +4,6 @@
 	<jsp:include page="template/head.jsp"/>
 	<link rel="stylesheet" type="text/css" href="../assets/css/sobre.css">
 </head>
-
 <body>
 	<jsp:include page="template/navbar.jsp"/>
 	<div class="titulo-sobre">
