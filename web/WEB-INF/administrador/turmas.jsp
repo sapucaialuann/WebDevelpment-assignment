@@ -43,6 +43,11 @@
                                 <button type="button" class="btn btn-outline-danger">Deletar</button>
                             </a>
                         </td>
+                        <td>
+                            <a href="/administrador/notas?id=<%=t.getId()%>">
+                                <button type="button" class="btn btn-outline-info">Ver notas</button>
+                            </a>
+                        </td>
                     </tr>
                     <%}%>
                 </tbody>

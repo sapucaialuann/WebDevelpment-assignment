@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Instrutor;
 import model.Turma;
 
-@WebServlet("/instrutor/transparencia")
+@WebServlet("/administrador/transparencia")
 public class TransparenciaController extends HttpServlet {
     
     TurmaDAO turmaDao = new TurmaDAO();
@@ -48,6 +48,8 @@ public class TransparenciaController extends HttpServlet {
         
         req.setAttribute("map", m);
         req.setAttribute("map2", m2);
+        
+        req.getRequestDispatcher("/WEB-INF/administrador/transparencia.jsp").forward(req, resp);
     }
     
 }

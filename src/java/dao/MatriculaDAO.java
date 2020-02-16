@@ -169,5 +169,42 @@ public class MatriculaDAO extends DAO<Matricula> {
 
         return list;
     }
+    
+    public List<Matricula> findByTurmaId(Long id) {
+        String query = "SELECT * FROM " + tableName + " WHERE turmas_id = ?";
+        Connection conn = DatabaseConnection.getConn();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Matricula> list = new ArrayList<>();
+
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setLong(1, id);
+            rs = ps.executeQuery();
+            Matricula entity;
+            AlunoDAO alunoDAO = new AlunoDAO();
+            TurmaDAO turmaDAO = new TurmaDAO();
+
+            while (rs.next()) {
+                entity = new Matricula();
+
+                entity.setId(rs.getLong("id"));
+                entity.setAluno(alunoDAO.findById(rs.getLong("alunos_id")).get());
+                entity.setTurma(turmaDAO.findById(rs.getLong("turmas_id")).get());
+                entity.setDataMatricula(rs.getDate("data_matricula"));
+                entity.setNota(rs.getDouble("nota"));
+
+                list.add(entity);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DbUtils.closeQuietly(conn);
+            DbUtils.closeQuietly(ps);
+            DbUtils.closeQuietly(rs);
+        }
+
+        return list;
+    }
 
 }
